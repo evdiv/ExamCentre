@@ -11,10 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+//Static Pages
+Route::get('/', 'PageController@home');
 
+
+
+//Registration nad Login routes
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
+
+//Account routes
+Route::get('/account', 'AccountController@index');
+
+
+
+//Subscription routes
+Route::get('/subscriptions/{subscription}', 'SubscriptionController@show');

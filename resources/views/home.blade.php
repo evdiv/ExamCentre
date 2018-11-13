@@ -1,29 +1,101 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">Dashboard</div>
+    <div class="container">
 
-                <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
+        <div class="row justify-content-center">
+            <div class="col-md-12">
 
-                   <h1>Here will be</h1>
-                        <li>Personal information: photo, name, email, balance, subscription type,
-                            links to update personal information and links to change subscription plan</li>
+                <div class="jumbotron jumbotron-fluid">
+                    <div class="container">
 
-                        <li>List of available tests</li>
-                        <li>List of completed tests with links to submit results</li>
+                        <h1>Here will be:</h1>
+                        <ul>
+                            <li>Header Image</li>
+                            <li>Service Description</li>
+                            <li>Animated intro</li>
+                            <li>List of advantages</li>
+                            <li>List of Subscription Plans <br/>
+                                (one plan can be free, so the user can use our testing method)</li>
+                            <li>Button to ask a question with modal form</li>
 
+                        </ul>
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+
+        <div class="row">
+            <div class="col-md-3">
+                <div class="alert alert-success" role="alert">
+                    <h3>Advantage 1</h3>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua.
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="alert alert-success" role="alert">
+                    <h3>Advantage 2</h3>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua.
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="alert alert-success" role="alert">
+                    <h3>Advantage 3</h3>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua.
+                </div>
+            </div>
+            <div class="col-md-3">
+                <div class="alert alert-success" role="alert">
+                    <h3>Advantage 4</h3>
+                    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                    labore et dolore magna aliqua.
                 </div>
             </div>
         </div>
+
+        <hr />
+
+        <div class="row">
+            <div class="col-md-4">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+                <a href="/subscriptions/1" class="btn btn-info btn-lg btn-block">Subscription Plan 1</a>
+            </div>
+
+            <div class="col-md-4">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+                <a href="/subscriptions/2" class="btn btn-info btn-lg btn-block">Subscription Plan 2</a>
+            </div>
+
+            <div class="col-md-4">
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
+                laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
+                voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
+                    non proident, sunt in culpa qui officia deserunt mollit anim id est laborum</p>
+
+                <a href="/subscriptions/3" class="btn btn-info btn-lg btn-block">Subscription Plan 3</a>
+            </div>
+        </div>
+
+
+
+
+
     </div>
-</div>
 @endsection

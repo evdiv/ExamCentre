@@ -10,4 +10,20 @@ class Order extends Model
     {
         return $this->hasOne('OrderType');
     }
+
+    public function shoppingCarts()
+    {
+        return $this->hasMany('ShoppingCart');
+    }
+
+    public function user()
+    {
+        return $this->belongsTo('User');
+    }
+
+
+    public function transaction()
+    {
+        return $this->hasOne('Transaction');
+    }
 }

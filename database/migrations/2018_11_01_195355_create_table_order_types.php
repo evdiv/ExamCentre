@@ -16,7 +16,7 @@ class CreateTableOrderTypes extends Migration
         Schema::create('order_types', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name', 255);
-            $table->text('description');
+            $table->text('description')->nullable();
             $table->timestamps();
         });
     }

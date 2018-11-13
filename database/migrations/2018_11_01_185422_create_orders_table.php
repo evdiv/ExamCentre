@@ -17,7 +17,7 @@ class CreateOrdersTable extends Migration
             $table->increments('id');
             $table->integer('user_id');
             $table->integer('order_type_id');
-            $table->float('amount', 8, 2);
+            $table->integer('transaction_id')->default('0');
             $table->timestamps();
         });
     }

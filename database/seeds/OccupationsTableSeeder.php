@@ -14,5 +14,13 @@ class OccupationsTableSeeder extends Seeder
         DB::table('occupations')->insert([
             'name' => 'Student'
         ]);
+
+        DB::table('occupations')->insert([
+            'name' => 'Worker'
+        ]);
+
+        DB::table('occupations')->insert([
+            'name' => 'Other'
+        ]);
     }
 }
