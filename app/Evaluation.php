@@ -8,7 +8,7 @@ class Evaluation extends Model
 {
     public function shoppingCart()
     {
-        return $this->hasOne('ShoppingCart');
+        return $this->hasOne('Lesson');
     }
 
     public function transaction()

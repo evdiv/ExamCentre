@@ -3,7 +3,7 @@
 use Illuminate\Database\Seeder;
 use Carbon\Carbon;
 
-class OrdersTableSeeder extends Seeder
+class LessonsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -12,18 +12,18 @@ class OrdersTableSeeder extends Seeder
      */
     public function run()
     {
-        DB::table('orders')->insert([
+        DB::table('lessons')->insert([
+            'exam_id' => 1,
             'user_id' => 1,
-            'order_type_id' => 1,
-            'transaction_id' => 1,
+            'order_id' => 1,
             'created_at' => Carbon::now()->format('Y-m-d H:i:s')
         ]);
 
-        DB::table('orders')->insert([
+        DB::table('lessons')->insert([
+            'exam_id' => 3,
             'user_id' => 2,
-            'order_type_id' => 1,
-            'transaction_id' => 2,
-            'created_at' => Carbon::now()->format('Y-m-d H:i:s')
+            'order_id' => 2,
+            'created_at' => Carbon::now()->subHours(3)->format('Y-m-d H:i:s')
         ]);
     }
 }

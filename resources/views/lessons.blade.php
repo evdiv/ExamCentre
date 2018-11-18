@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Dashboard</div>
+                    <div class="card-header">Your Lessons</div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -15,8 +15,14 @@
                         @endif
 
                         <h1>Here will be</h1>
-                        <li>Personal information: photo, name, email, balance, subscription type,
-                            links to update personal information and statistic about available and completed tests</li>
+                        <p>List of available, completed and evaluated lessons</p>
+                        <ul>
+                            @foreach($lessons as $lesson)
+                            <li>
+                                <a href="/lesson/{{ $lesson->id }}">{{ $lesson->exam->title }}, <small>{{ $lesson->created_at }}</small></a>
+                            </li>
+                            @endforeach
+                        </ul>
 
 
 

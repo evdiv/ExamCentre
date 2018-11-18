@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
+use Carbon\Carbon;
 
 class UsersTableSeeder extends Seeder
 {
@@ -18,7 +19,8 @@ class UsersTableSeeder extends Seeder
             'age' => 23,
             'email' => 'eugene@test.ca',
             'password' => bcrypt('secret'),
-            'occupation_id' => 1
+            'occupation_id' => 1,
+            'created_at' => Carbon::now()->subHours(2)->format('Y-m-d H:i:s')
         ]);
 
 
@@ -29,7 +31,8 @@ class UsersTableSeeder extends Seeder
             'age' => 27,
             'email' => 'kyle@test.ca',
             'password' => bcrypt('secret'),
-            'occupation_id' => 2
+            'occupation_id' => 2,
+            'created_at' => Carbon::now()->subHours(4)->format('Y-m-d H:i:s')
         ]);
 
 
@@ -40,7 +43,8 @@ class UsersTableSeeder extends Seeder
             'age' => 35,
             'email' => 'mike@test.ca',
             'password' => bcrypt('secret'),
-            'occupation_id' => 3
+            'occupation_id' => 3,
+            'created_at' => Carbon::now()->subHours(3)->format('Y-m-d H:i:s')
         ]);
 
     }

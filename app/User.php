@@ -33,7 +33,7 @@ class User extends Authenticatable
      */
     public function occupation()
     {
-        return $this->hasOne('Occupation');
+        return $this->hasOne('App\Occupation');
     }
 
     /**
@@ -41,15 +41,15 @@ class User extends Authenticatable
      */
     public function orders()
     {
-        return $this->hasMany('Order');
+        return $this->hasMany('App\Order');
     }
 
     /**
      * Get the user's shopping carts
      */
-    public function shoppingCarts()
+    public function lessons()
     {
-        return $this->hasMany('ShoppingCart');
+        return $this->hasMany('App\Lesson');
     }
 
 

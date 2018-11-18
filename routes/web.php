@@ -23,7 +23,8 @@ Auth::routes();
 
 //Account routes
 Route::get('/account', 'AccountController@index');
-
+Route::get('/lessons', 'LessonController@index');
+Route::get('/lesson/{lesson}', 'LessonController@show');
 
 
 //Subscription routes

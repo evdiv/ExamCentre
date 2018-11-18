@@ -5,7 +5,7 @@
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">Dashboard</div>
+                    <div class="card-header"><h1>{{ $lesson->exam->title }}</h1></div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -14,11 +14,11 @@
                             </div>
                         @endif
 
-                        <h1>Here will be</h1>
-                        <li>Personal information: photo, name, email, balance, subscription type,
-                            links to update personal information and statistic about available and completed tests</li>
-
-
+                        <p>
+                            {{ $lesson->exam->description }}<br/>
+                            Video: {{ $lesson->exam->src }}
+                        </p>
+                        <small>{{ $lesson->created_at }}</small>
 
                     </div>
                 </div>

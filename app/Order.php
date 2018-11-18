@@ -13,7 +13,7 @@ class Order extends Model
 
     public function shoppingCarts()
     {
-        return $this->hasMany('ShoppingCart');
+        return $this->hasMany('Lesson');
     }
 
     public function user()
