@@ -16,9 +16,9 @@ class LessonController extends Controller
 
     public function index()
     {
-        return view('lessons', [
-            'lessons' => auth()->user()->lessons
-        ]);
+        $lessons = auth()->user()->lessons;
+
+        return view('lessons', compact('lessons'));
     }
 
 

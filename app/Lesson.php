@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
+
     public function user()
     {
         return $this->belongsTo('App\User');
@@ -18,11 +19,15 @@ class Lesson extends Model
     }
 
 
-
     public function exam()
     {
         return $this->belongsTo('App\Exam');
     }
 
 
+    public function evaluation()
+    {
+        return $this->hasOne('App\Evaluation');
+
+    }
 }

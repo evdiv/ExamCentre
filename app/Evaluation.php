@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Evaluation extends Model
 {
-    public function shoppingCart()
+    public function lesson()
     {
         return $this->hasOne('Lesson');
     }
