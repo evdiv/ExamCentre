@@ -12,25 +12,36 @@ class SubscriptionsTableSeeder extends Seeder
     public function run()
     {
         DB::table('subscriptions')->insert([
-            'title' => 'First subscription',
+            'title' => 'Demo lesson',
             'description' => 'This subscription is typically using for demo purposes.',
-            'price' => 0.99,
+            'price' => 0,
             'exams' => 1,
             'active' => 1
         ]);
 
+
         DB::table('subscriptions')->insert([
-            'title' => 'Second subscription',
+            'title' => '1 Lesson',
             'description' => 'This subscription is for users who want to increase their language skills and save money.',
-            'price' => 3.99,
+            'price' => 5.99,
+            'exams' => 1,
+            'active' => 1
+        ]);
+
+
+        DB::table('subscriptions')->insert([
+            'title' => '3 Lesson',
+            'description' => 'This subscription is for users who want to increase their language skills and save money.',
+            'price' => 14.49,
             'exams' => 3,
             'active' => 1
         ]);
 
+
         DB::table('subscriptions')->insert([
-            'title' => 'Third subscription',
+            'title' => '5 Lesson',
             'description' => 'This subscription is for users who want to get significant improvement in their language skills fast',
-            'price' => 7.99,
+            'price' => 22.49,
             'exams' => 5,
             'active' => 1
         ]);

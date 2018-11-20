@@ -2,13 +2,19 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use App\Subscription;
+
 
 class PageController extends Controller
 {
 
     public function home()
     {
-        return view('home');
+        $subscriptions = Subscription::where('active', 1)
+            ->orderBy('price', 'asc')
+            ->take(3)
+            ->get();
+
+        return view('home', compact('subscriptions'));
     }
 }

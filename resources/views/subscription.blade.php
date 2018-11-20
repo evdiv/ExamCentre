@@ -5,11 +5,12 @@
     <div class="container">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card bg-light">
                     <div class="card-header">
-                        <h4>{{ $subscription->title }}</h4>
-                        <p>{{ $subscription->description }}<br/>
-                        Current Price: <b>${{ $subscription->price }} USD</b></p>
+                        <h3>{{ $subscription->title }}</h3>
+                        <p>{{ $subscription->description }}</p>
+
+                        <h1 class="display-4">Current Price: ${{ $subscription->price }} USD</h1>
                     </div>
 
                     <div class="card-body">

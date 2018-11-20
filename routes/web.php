@@ -28,4 +28,5 @@ Route::get('/lesson/{lesson}', 'LessonController@show');
 
 
 //Subscription routes
+Route::get('/subscriptions', 'SubscriptionController@index');
 Route::get('/subscriptions/{subscription}', 'SubscriptionController@show');
