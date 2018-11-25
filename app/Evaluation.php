@@ -6,13 +6,17 @@ use Illuminate\Database\Eloquent\Model;
 
 class Evaluation extends Model
 {
+    protected $guarded = [];
+
+
     public function lesson()
     {
-        return $this->hasOne('Lesson');
+        return $this->hasOne(Lesson::class);
     }
+
 
     public function transaction()
     {
-        return $this->hasOne('Transaction');
+        return $this->hasOne(Transaction::class);
     }
 }

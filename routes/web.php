@@ -15,18 +15,26 @@
 Route::get('/', 'PageController@home');
 
 
-
 //Registration nad Login routes
 Auth::routes();
 
 
-
 //Account routes
 Route::get('/account', 'AccountController@index');
+
+
+//Lesson routes
 Route::get('/lessons', 'LessonController@index');
-Route::get('/lesson/{lesson}', 'LessonController@show');
+Route::get('/lessons/{lesson}', 'LessonController@show');
+Route::patch('/lessons/{lesson}', 'LessonController@update');
 
 
 //Subscription routes
 Route::get('/subscriptions', 'SubscriptionController@index');
 Route::get('/subscriptions/{subscription}', 'SubscriptionController@show');
+Route::post('/subscriptions/{subscription}', 'OrderController@store');
+
+
+//Evaluation routes
+Route::get('/evaluations/{evaluation}', 'EvaluationController@show');
+Route::post('/evaluations', 'EvaluationController@store');

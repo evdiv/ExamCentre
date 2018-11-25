@@ -24,20 +24,20 @@ class User extends Authenticatable
 
     public function occupation()
     {
-        return $this->hasOne('App\Occupation');
+        return $this->hasOne(Occupation::class);
     }
 
 
     public function orders()
     {
-        return $this->hasMany('App\Order');
+        return $this->hasMany(Order::class);
     }
 
 
 
     public function lessons()
     {
-        return $this->hasMany('App\Lesson');
+        return $this->hasMany(Lesson::class);
     }
 
 }

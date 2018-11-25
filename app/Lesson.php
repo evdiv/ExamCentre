@@ -6,28 +6,30 @@ use Illuminate\Database\Eloquent\Model;
 
 class Lesson extends Model
 {
+    protected $guarded = [];
+
 
     public function user()
     {
-        return $this->belongsTo('App\User');
+        return $this->belongsTo(User::class);
     }
 
 
     public function order()
     {
-        return $this->belongsTo('App\Order');
+        return $this->belongsTo(Order::class);
     }
 
 
     public function exam()
     {
-        return $this->belongsTo('App\Exam');
+        return $this->belongsTo(Exam::class);
     }
 
 
     public function evaluation()
     {
-        return $this->hasOne('App\Evaluation');
-
+        return $this->hasOne(Evaluation::class);
     }
+
 }

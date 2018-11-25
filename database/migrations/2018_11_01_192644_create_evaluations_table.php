@@ -18,7 +18,7 @@ class CreateEvaluationsTable extends Migration
             $table->integer('lesson_id');
             $table->integer('transaction_id')->default('0');
             $table->tinyInteger('completed')->default('0');
-            $table->string('report_src');
+            $table->string('report_src')->nullable();
             $table->text('notes')->nullable();
             $table->timestamps();
         });

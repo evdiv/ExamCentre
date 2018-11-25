@@ -20,7 +20,7 @@
 
         <div class="row">
             <div class="col-md-3">
-                <div class="card text-white bg-success">
+                <div class="card text-white bg-success shadow-sm">
                     <div class="card-header">Advantage 1</div>
                     <div class="card-body">
                         <p class="card-text">
@@ -33,7 +33,7 @@
 
 
             <div class="col-md-3">
-                <div class="card text-white bg-success">
+                <div class="card text-white bg-success shadow-sm">
                     <div class="card-header">Advantage 2</div>
                     <div class="card-body">
                         <p class="card-text">
@@ -46,7 +46,7 @@
 
 
             <div class="col-md-3">
-                <div class="card text-white bg-success">
+                <div class="card text-white bg-success shadow-sm">
                     <div class="card-header">Advantage 3</div>
                     <div class="card-body">
                         <p class="card-text">
@@ -59,7 +59,7 @@
 
 
             <div class="col-md-3">
-                <div class="card text-white bg-success">
+                <div class="card text-white bg-success shadow-sm">
                     <div class="card-header">Advantage 4</div>
                     <div class="card-body">
                         <p class="card-text">
@@ -78,9 +78,13 @@
         <div class="row">
             @foreach($subscriptions as $subscription)
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="card shadow">
+
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">{{ $subscription->title }}</h4>
+                        </div>
+
                         <div class="card-body">
-                            <h5 class="card-title">{{ $subscription->title }}</h5>
                             <p class="card-text">
                                 {{ $subscription->description }}
                             </p>
@@ -91,7 +95,7 @@
                                     Free
                                 @endif
                             </h1>
-                            <a href="/subscriptions/{{ $subscription->id }}" class="btn btn-primary">Subscribe</a>
+                            <a href="/subscriptions/{{ $subscription->id }}" class="btn btn-primary btn-lg btn-block">Subscribe</a>
                         </div>
                     </div>
                 </div>

@@ -16,6 +16,7 @@ class CreateTransactionsTable extends Migration
         Schema::create('transactions', function (Blueprint $table) {
             $table->increments('id');
             $table->integer('user_id');
+            $table->integer('order_id')->default('0');
             $table->float('amount', 8, 2);
             $table->tinyInteger('complete')->default('0');
             $table->timestamps();

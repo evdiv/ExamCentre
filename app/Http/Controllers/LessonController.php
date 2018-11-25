@@ -28,4 +28,15 @@ class LessonController extends Controller
 
         return view('lesson', compact('lesson'));
     }
+
+
+    public function update(Request $request, Lesson $lesson)
+    {
+        $this->authorize('view', $lesson);
+
+        $lesson->completed = $request->completed;
+        $lesson->save();
+
+        return redirect()->back();
+    }
 }

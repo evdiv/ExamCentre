@@ -14,6 +14,7 @@ class TransactionsTableSeeder extends Seeder
     {
         DB::table('transactions')->insert([
             'user_id' => 1,
+            'order_id' => 1,
             'amount' => 0,
             'complete' => 1,
             'created_at' => Carbon::now()->subHours(1)->format('Y-m-d H:i:s')
@@ -21,6 +22,7 @@ class TransactionsTableSeeder extends Seeder
 
         DB::table('transactions')->insert([
             'user_id' => 2,
+            'order_id' => 2,
             'amount' => 5.99,
             'complete' => 1,
             'created_at' => Carbon::now()->subHours(2)->format('Y-m-d H:i:s')

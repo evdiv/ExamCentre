@@ -59,14 +59,13 @@
 
                                         <tr class="table-primary">
                                             <td></td>
-                                            <td><a href="/lesson/{{ $lesson->id }}">{{ $lesson->exam->title }}</a></td>
+                                            <td><a href="/lessons/{{ $lesson->id }}">{{ $lesson->exam->title }}</a></td>
                                             <td>{{ $lesson->created_at }}</td>
                                             <td>
-                                                <a href="/lesson/{{ $lesson->id }}" type="button" class="btn btn-light btn-sm">Open</a>
+                                                <a href="/lessons/{{ $lesson->id }}" type="button" class="btn btn-light btn-sm">Open</a>
                                             </td>
                                         </tr>
                                     @endforeach
-
 
 
                                     <tr class="table-light">
@@ -84,10 +83,14 @@
 
                                         <tr class="table-success">
                                             <td></td>
-                                            <td><a href="/lesson/{{ $lesson->id }}">{{ $lesson->exam->title }}</a></td>
+                                            <td><a href="/lessons/{{ $lesson->id }}">{{ $lesson->exam->title }}</a></td>
                                             <td>{{ $lesson->created_at }}</td>
                                             <td>
-                                                <a href="/lesson/{{ $lesson->id }}" type="button" class="btn btn-light btn-sm">Evaluate</a>
+                                                <form method="POST" action="/evaluations">
+                                                    @csrf
+                                                    <input type="hidden" name="lesson_id" value="{{ $lesson->id }}" >
+                                                    <input type="submit" type="button" class="btn btn-info btn-sm" value="Evaluate">
+                                                </form>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -104,11 +107,11 @@
                                         @if($lesson->evaluation)
                                             <tr class="table-secondary">
                                                 <td></td>
-                                                <td><a href="/lesson/{{ $lesson->id }}">{{ $lesson->exam->title }}</a></td>
+                                                <td><a href="/lessons/{{ $lesson->id }}">{{ $lesson->exam->title }}</a></td>
                                                 <td>{{ $lesson->created_at }}</td>
                                                 <td>
                                                     @if($lesson->evaluation->completed)
-                                                        <a href="/lesson/{{ $lesson->id }}" type="button" class="btn btn-light btn-sm">Results</a>
+                                                        <a href="/lessons/{{ $lesson->id }}" type="button" class="btn btn-light btn-sm">Results</a>
                                                     @else
                                                         <small>on evaluation...</small>
                                                     @endif

@@ -28,7 +28,7 @@
                                     Free
                                 @endif
                             </h1>
-                            <a href="/subscriptions/{{ $subscription->id }}" class="btn btn-primary">Subscribe</a>
+                            <a href="/subscriptions/{{ $subscription->id }}" class="btn btn-primary btn-lg">Subscribe</a>
                         </div>
                     </div>
                 </div>
