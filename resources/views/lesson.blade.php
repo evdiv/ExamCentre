@@ -29,7 +29,8 @@
 
                     <div class="alert alert-info">
                         You have already completed this lesson.
-                        Now you can send its results for evaluation or take the lasson one more time.
+                        Now you can send its results for evaluation or take the lesson one more time.
+                        <a href="/lessons">Return to lessons</a>
                     </div>
 
                     <div class="text-right">

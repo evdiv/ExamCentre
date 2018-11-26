@@ -12,6 +12,10 @@ class OrderController extends Controller
 {
     public function store(Subscription $subscription)
     {
+        if(!Exam::available($subscription->exams)) {
+            return redirect('/lessons')->withErrors('There is no any available lesson at the moment');
+        }
+
         $order = Order::create([
             'user_id' => auth()->id(),
             'order_type_id' => request('order_type_id')
@@ -21,7 +25,7 @@ class OrderController extends Controller
             Lesson::create([
                 'user_id' => auth()->id(),
                 'order_id' => $order->id,
-                'exam_id' => Exam::getNew()
+                'exam_id' => Exam::getNotViewed()->id
             ]);
         }
 

@@ -20,7 +20,8 @@ Auth::routes();
 
 
 //Account routes
-Route::get('/account', 'AccountController@index');
+Route::get('/account', 'AccountController@show');
+Route::patch('/account', 'AccountController@update');
 
 
 //Lesson routes

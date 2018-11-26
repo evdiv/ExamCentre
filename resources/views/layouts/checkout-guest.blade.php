@@ -53,7 +53,7 @@
 
 
     <div class="col-md-6 offset-md-3">
-        <button type="submit" class="btn btn-block btn-primary">Subscribe</button>
+        <button type="submit" class="btn btn-block btn-lg btn-primary">Subscribe</button>
     </div>
 
 </form>

@@ -6,23 +6,27 @@ use Illuminate\Http\Request;
 
 class AccountController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
+
     public function __construct()
     {
         $this->middleware('auth');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function index()
+
+    public function show()
     {
-        return view('account');
+        $user = auth()->user();
+
+        return view('account', compact('user'));
+    }
+
+
+    public function update()
+    {
+        $user = auth()->user();
+
+        $user->update(request(['name', 'email', 'birthday', 'country', 'city']));
+
+        return redirect('/lessons')->with('success', 'Your account has been updated');
     }
 }

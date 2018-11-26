@@ -6,13 +6,23 @@ use Illuminate\Database\Eloquent\Model;
 
 class Exam extends Model
 {
-    //Get an Exam that haven't been seen by user
-    public static function getNew() {
-        //Get the exam id
-        //that not in the lessons id with the current user id
 
-        //$exam = self::where('active', 1)->first();
+    //Get an Exam that haven't been viewed by user
+    public static function getNotViewed() {
 
-        return 2;
+        $lessons = Lesson::select('exam_id')->where('user_id', '=', auth()->id())->get();
+
+        $exam = Exam::whereNotIn('id', $lessons)->get()->first();
+
+        return $exam;
+    }
+
+
+    //Check if Exams are available for purchase
+    public static function available($qty)
+    {
+        $lessons = Lesson::select('exam_id')->where('user_id', '=', auth()->id())->get();
+
+        return Exam::whereNotIn('id', $lessons)->get()->count() >= $qty;
     }
 }

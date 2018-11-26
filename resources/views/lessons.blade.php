@@ -2,6 +2,9 @@
 
 @section('content')
     <div class="container">
+
+        @include('layouts.errors')
+
         <div class="row justify-content-center">
             <div class="col-md-4">
                 <div class="card">
@@ -10,10 +13,17 @@
                         <img src="https://via.placeholder.com/250.png" class="rounded" alt="..."><br/>
 
                         {{ Auth::user()->name }}<br/>
-                        City: {{ Auth::user()->city }}<br/>
+                        {{ Auth::user()->city }}, {{ Auth::user()->country }}<br/>
                         Email: {{ Auth::user()->email }}<br/><br/>
 
-                        <small>Created {{ Auth::user()->created_at }}</small>
+
+                        <small>
+                            @if (Auth::user()->updated_at)
+                                Updated {{ Auth::user()->updated_at }}
+                            @else
+                                Created {{ Auth::user()->created_at }}
+                            @endif
+                        </small>
 
                     </div>
                 </div>
