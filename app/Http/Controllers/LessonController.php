@@ -30,12 +30,11 @@ class LessonController extends Controller
     }
 
 
-    public function update(Request $request, Lesson $lesson)
+    public function update(Lesson $lesson)
     {
         $this->authorize('view', $lesson);
 
-        $lesson->completed = $request->completed;
-        $lesson->save();
+        $lesson->update(request(['completed']));
 
         return redirect()->back();
     }

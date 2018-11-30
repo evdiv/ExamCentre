@@ -12,9 +12,9 @@ class Exam extends Model
 
         $lessons = Lesson::select('exam_id')->where('user_id', '=', auth()->id())->get();
 
-        $exam = Exam::whereNotIn('id', $lessons)->get()->first();
+        $exams = Exam::whereNotIn('id', $lessons)->get();
 
-        return $exam;
+        return $exams;
     }
 
 

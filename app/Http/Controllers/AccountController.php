@@ -23,9 +23,15 @@ class AccountController extends Controller
 
     public function update()
     {
-        $user = auth()->user();
+        $validated = request()->validate([
+            'name' => 'required|max:255',
+            'email' => 'required|email',
+            'birthday' => 'date',
+            'country' => 'max:255',
+            'city' => 'max:255'
+        ]);
 
-        $user->update(request(['name', 'email', 'birthday', 'country', 'city']));
+        auth()->user()->update($validated);
 
         return redirect('/lessons')->with('success', 'Your account has been updated');
     }
