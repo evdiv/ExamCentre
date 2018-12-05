@@ -10,11 +10,9 @@
                 <div class="card">
                     <div class="card-header">Personal Details</div>
                     <div class="card-body">
-                        <img src="https://via.placeholder.com/250.png" class="rounded" alt="..."><br/>
-
                         {{ Auth::user()->name }}<br/>
-                        {{ Auth::user()->city }}, {{ Auth::user()->country }}<br/>
-                        Email: {{ Auth::user()->email }}<br/><br/>
+                        Email: {{ Auth::user()->email }}<br/>
+                        Country: {{ Auth::user()->country }}<br/><br/>
 
                         <small>
                             @if (Auth::user()->updated_at)
@@ -83,8 +81,7 @@
                                     <input type="date" class="form-control" name="birthday" value="{{ Auth::user()->birthday }}">
                                 </div>
                             </div>
-
-
+                            
 
                             <div class="form-group row">
                                 <label for="country" class="col-md-4 col-form-label text-md-right">Country</label>
@@ -93,16 +90,6 @@
                                     <input type="text" class="form-control" name="country" value="{{ Auth::user()->country }}">
                                 </div>
                             </div>
-
-
-                            <div class="form-group row">
-                                <label for="city" class="col-md-4 col-form-label text-md-right">City</label>
-
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" name="city" value="{{ Auth::user()->city }}">
-                                </div>
-                            </div>
-
 
 
                             <div class="form-group row">

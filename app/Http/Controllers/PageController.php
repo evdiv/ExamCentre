@@ -10,7 +10,11 @@ class PageController extends Controller
 
     public function home()
     {
-        $subscriptions = Subscription::where('active', 1)->orderBy('price', 'asc')->take(3)->get();
+		if (auth()->guest()) {
+			$subscriptions = Subscription::for_guest();
+		} else {
+			$subscriptions = Subscription::for_registered();
+		}
 
         return view('home', compact('subscriptions'));
     }

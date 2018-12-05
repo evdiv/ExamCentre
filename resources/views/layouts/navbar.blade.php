@@ -38,7 +38,7 @@
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                            <a class="dropdown-item" href="/lessons/">Lessons</a>
+                            <a class="dropdown-item" href="/lessons/">My Lessons</a>
                             <a class="dropdown-item" href="/account/">Settings</a>
 
                             <a class="dropdown-item" href="{{ route('logout') }}"

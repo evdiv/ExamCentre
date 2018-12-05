@@ -10,11 +10,9 @@
                 <div class="card">
                     <div class="card-header">Personal Details (<a href="/account">Edit</a>)</div>
                     <div class="card-body">
-                        <img src="https://via.placeholder.com/250.png" class="rounded" alt="..."><br/>
-
                         {{ Auth::user()->name }}<br/>
-                        {{ Auth::user()->city }}, {{ Auth::user()->country }}<br/>
-                        Email: {{ Auth::user()->email }}<br/><br/>
+                        Email: {{ Auth::user()->email }}<br/>
+                        Country: {{ Auth::user()->country }}<br/><br/>
 
 
                         <small>
@@ -47,7 +45,7 @@
                                 <tr>
                                     <th scope="col"></th>
                                     <th scope="col">Exam</th>
-                                    <th scope="col">Purchased</th>
+                                    <th scope="col">Added</th>
                                     <th scope="col">Actions</th>
                                 </tr>
                                 </thead>
@@ -56,7 +54,7 @@
                                 <tbody>
                                     <tr class="table-light">
                                         <td></td>
-                                        <td><h6 style="margin-top: 2px;">Active Lessons</h6></td>
+                                        <td><h6 style="margin-top: 20px;">Active Lessons</h6></td>
                                         <td></td>
                                         <td></td>
                                     </tr>
@@ -72,7 +70,7 @@
                                             <td><a href="/lessons/{{ $lesson->id }}">{{ $lesson->exam->title }}</a></td>
                                             <td>{{ $lesson->created_at }}</td>
                                             <td>
-                                                <a href="/lessons/{{ $lesson->id }}" type="button" class="btn btn-light btn-sm">Open</a>
+                                                <a href="/lessons/{{ $lesson->id }}" class="btn btn-light btn-sm">Open</a>
                                             </td>
                                         </tr>
                                     @endforeach
@@ -80,7 +78,7 @@
 
                                     <tr class="table-light">
                                         <td></td>
-                                        <td><h6 style="margin-top: 2px;">Completed Lessons</h6></td>
+                                        <td><h6 style="margin-top: 20px;">Completed Lessons</h6></td>
                                         <td></td>
                                         <td></td>
                                     </tr>
@@ -104,13 +102,6 @@
                                             </td>
                                         </tr>
                                     @endforeach
-
-                                    <tr class="table-light">
-                                        <td></td>
-                                        <td><h6 style="margin-top: 2px;">Lessons On Evaluation</h6></td>
-                                        <td></td>
-                                        <td></td>
-                                    </tr>
 
                                     @foreach($lessons as $lesson)
 

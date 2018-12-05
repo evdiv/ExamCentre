@@ -15,7 +15,6 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'active' => 1,
             'name' => 'Eugene',
-            'city' => 'Toronto',
             'country' => 'Canada',
             'email' => 'eugene@test.ca',
             'password' => bcrypt('secret'),
@@ -27,7 +26,6 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'active' => 1,
             'name' => 'Kyle',
-            'city' => 'Moscow',
             'country' => 'Russia',
             'email' => 'kyle@test.ca',
             'password' => bcrypt('secret'),
@@ -39,7 +37,6 @@ class UsersTableSeeder extends Seeder
         DB::table('users')->insert([
             'active' => 1,
             'name' => 'Mike',
-            'city' => 'Kiev',
             'country' => 'Ukraine',
             'email' => 'mike@test.ca',
             'password' => bcrypt('secret'),

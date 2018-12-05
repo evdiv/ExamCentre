@@ -2,33 +2,25 @@
 
 namespace App\Http\Controllers;
 
-use App\Subscription;
-use Illuminate\Http\Request;
-use App\Order;
-use App\Lesson;
-use App\Exam;
+use App\Http\Requests\SubscriptionRequest;
+use App\Services\CreateOrderService;
+
 
 class OrderController extends Controller
 {
-    public function store(Subscription $subscription)
+    private $createOrderService;
+
+
+    public function __construct(CreateOrderService $createOrderService) 
     {
-        if(Exam::getNotViewed()->count() < $subscription->exams) {
-            return redirect('/lessons')->withErrors('There is no any available lesson at the moment');
-        }
+        $this->createOrderService = $createOrderService;
+    }
 
-        $order = Order::create([
-            'user_id' => auth()->id(),
-            'order_type_id' => request('order_type_id')
-        ]);
 
-        while($subscription->exams--) {
-            Lesson::create([
-                'user_id' => auth()->id(),
-                'order_id' => $order->id,
-                'exam_id' => Exam::getNotViewed()->first()
-            ]);
-        }
+    public function store(SubscriptionRequest $request)
+    {
+        $this->createOrderService->make($request);
 
-       return redirect('/lessons');
+        return redirect('/lessons');
     }
 }
