@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
-use App\Services\CreateUserService;
+use App\Services\UserService;
 
 class RegisterController extends Controller
 {
@@ -12,24 +12,24 @@ class RegisterController extends Controller
 
 
     protected $redirectTo = '/lessons';
-    protected $createUserService;
+    protected $userService;
 
 
-    public function __construct(CreateUserService $createUserService)
+    public function __construct(UserService $userService)
     {
         $this->middleware('guest');
-        $this->createUserService = $createUserService;
+        $this->userService = $userService;
     }
 
 
     protected function validator(array $data)
     {
-        return $this->createUserService->validate($data);
+        return $this->userService->validate($data);
     }
 
 
     protected function create(array $data)
     {
-        return $this->createUserService->make($data);
+        return $this->userService->make($data);
     }
 }

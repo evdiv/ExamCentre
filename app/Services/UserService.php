@@ -7,10 +7,10 @@ use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
 
 
-class CreateUserService
+class UserService
 {
 
-	public function make(array $data)
+	public function register(array $data)
 	{
         $user = User::create([
             'name' => $data['name'],

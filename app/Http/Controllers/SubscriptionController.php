@@ -2,26 +2,34 @@
 
 namespace App\Http\Controllers;
 
-use App\Subscription;
-use App\Exam;
+use App\Services\SubscriptionService;
 
 class SubscriptionController extends Controller
 {
+
+    private $subscriptionService;
+
+
+    public function __construct(SubscriptionService $subscriptionService) 
+    {
+        $this->subscriptionService = $subscriptionService;
+    }
+
+
     public function index()
     {
-        $subscriptions = Subscription::for_registered();
+        $subscriptions = $this->subscriptionService->getAll();
         return view('subscriptions', compact('subscriptions'));
     }
 
 
     public function show($id)
     {
-        $subscription = Subscription::findOrFail($id);
+        $subscription = $this->subscriptionService->getById($id);
 
-        if(!Exam::available($subscription->exams)) {
-            return view('subscription', compact('subscription'))->withErrors('The subscription is not available at the moment');
+        if($this->subscriptionService->hasAvailableExams($id)) {
+            return view('subscription', compact('subscription'));
         }
-
-        return view('subscription', compact('subscription'));
+        return view('subscription', compact('subscription'))->withErrors('The subscription is not available at the moment');
     }
 }

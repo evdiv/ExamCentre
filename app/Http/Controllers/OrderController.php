@@ -3,23 +3,23 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\SubscriptionRequest;
-use App\Services\CreateOrderService;
+use App\Services\OrderService;
 
 
 class OrderController extends Controller
 {
-    private $createOrderService;
+    private $orderService;
 
 
-    public function __construct(CreateOrderService $createOrderService) 
+    public function __construct(OrderService $orderService) 
     {
-        $this->createOrderService = $createOrderService;
+        $this->orderService = $orderService;
     }
 
 
     public function store(SubscriptionRequest $request)
-    {
-        $this->createOrderService->make($request);
+    {        
+        $this->orderService->store($request);
 
         return redirect('/lessons');
     }
