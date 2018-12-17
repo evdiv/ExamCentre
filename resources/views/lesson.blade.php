@@ -14,9 +14,21 @@
                             </div>
                         @endif
 
+   <div class="player">
+     <video class="player__video viewer" src="https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164"></video>
+
+     <div class="player__controls">
+
+       <button class="player__button toggle" title="Toggle Play">►</button>
+
+     </div>
+   </div>
+
+
+
+
                         <p>
                             {{ $lesson->exam->description }}<br/>
-                            Video: {{ $lesson->exam->src }}
                         </p>
                         <small>{{ $lesson->created_at }}</small>
 
@@ -24,6 +36,59 @@
                 </div>
 
                 <hr/>
+
+                <script>
+
+
+// get elements
+const player = document.querySelector('.player');
+const video = player.querySelector('.viewer');
+const toggle = player.querySelector('.toggle');
+const skipButtons = player.querySelectorAll('[data-skip]');
+const ranges = player.querySelectorAll('.player__slider');
+
+// build functions
+function togglePlay() {
+    if (video.paused) {
+        video.play();
+    } else {
+        video.pause();
+    }
+    // alternatively this can be written with a ternary operator
+    /*
+    const method = video.paused ? 'play' : 'pause';
+    video[method]();
+    */
+}
+
+function spaceBarTogglePlay(e) {
+    if (e.keyCode == 32) {
+        togglePlay();
+    }
+}
+
+function updateButton() {
+    const icon = this.paused ? '►' : '❚❚';
+    toggle.textContent = icon;
+}
+
+function skip() {
+    video.currentTime += parseFloat(this.dataset.skip);
+}
+
+
+// event listeners
+video.addEventListener('click', togglePlay);
+video.addEventListener('play', updateButton);
+video.addEventListener('pause', updateButton);
+
+toggle.addEventListener('click', togglePlay);
+document.addEventListener('keypress', spaceBarTogglePlay);
+skipButtons.forEach(button => button.addEventListener('click', skip));
+
+let mousedown = false;
+
+                </script>
 
                 @if($lesson->completed && !$lesson->evaluation)
 

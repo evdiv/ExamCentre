@@ -13,7 +13,7 @@ class SubscriptionRequest extends FormRequest
      */
     public function authorize()
     {
-        return auth()->guest();
+        return true;
     }
 
     /**
@@ -23,12 +23,15 @@ class SubscriptionRequest extends FormRequest
      */
     public function rules()
     {
-        return [
-            'name' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:users',
-            'occupation_id' => 'integer',
-            'country' => 'string|max:255',
-            'password' => 'required|string|min:6|confirmed',
-        ];
+        if(auth()->guest()) {
+            return [
+                'name' => 'required|string|max:255',
+                'email' => 'required|string|email|max:255|unique:users',
+                'occupation_id' => 'integer',
+                'country' => 'string|max:255',
+                'password' => 'required|string|min:6|confirmed',
+            ];
+        }
+        return [];
     }
 }

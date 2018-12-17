@@ -1,6 +1,11 @@
 /node_modules
 /public/hot
+/public/temp
 /public/storage
+/public/test.php
+/public/test2.php
+/public/exams
+/public/js
 /storage/*.key
 /vendor
 /.idea
