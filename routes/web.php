@@ -28,3 +28,9 @@ Route::patch('/lessons/{lesson}', 'LessonController@update');
 //Evaluation routes
 Route::get('/evaluations/{evaluation}', 'EvaluationController@show');
 Route::post('/evaluations', 'EvaluationController@store');
+
+
+//Subscription Payments routes
+Route::get('/payment/{id}', 'PaymentController@show');
+Route::get('/payment', 'PaymentController@index');
+Route::post('/payment', 'PaymentController@store');

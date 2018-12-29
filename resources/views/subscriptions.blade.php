@@ -3,6 +3,13 @@
 @section('content')
     <div class="container">
 
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/lessons/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Subscriptions</li>
+            </ol>
+        </nav>
+
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
                 <h1 class="display-4">Subscriptions</h1>
@@ -15,9 +22,9 @@
 
             @foreach($subscriptions as $subscription)
                 <div class="col-md-4">
-                    <div class="card">
+                    <div class="card text-white bg-info shadow">
+                        <div class="card-header">{{ $subscription->title }}</div>
                         <div class="card-body">
-                            <h5 class="card-title">{{ $subscription->title }}</h5>
                             <p class="card-text">
                                 {{ $subscription->description }}
                             </p>
@@ -28,7 +35,7 @@
                                     Free
                                 @endif
                             </h1>
-                            <a href="/subscriptions/{{ $subscription->id }}" class="btn btn-primary btn-lg">Subscribe</a>
+                            <a href="/subscriptions/{{ $subscription->id }}" class="btn btn-light btn-lg">Subscribe</a>
                         </div>
                     </div>
                 </div>

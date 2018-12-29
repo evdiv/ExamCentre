@@ -13,10 +13,4 @@ class Evaluation extends Model
     {
         return $this->hasOne(Lesson::class);
     }
-
-
-    public function transaction()
-    {
-        return $this->hasOne(Transaction::class);
-    }
 }

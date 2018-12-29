@@ -19,7 +19,12 @@ class OrderController extends Controller
 
     public function store(SubscriptionRequest $request)
     {        
-        $this->orderService->store($request);
+        $order = $this->orderService->store($request);
+        $id = $request->route('id');
+
+        if($order) {
+            return redirect('/payment/' . $id);
+        }
 
         return redirect('/lessons');
     }

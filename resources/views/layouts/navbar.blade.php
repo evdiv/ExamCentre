@@ -28,7 +28,7 @@
                     </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="/subscriptions">Get Lessons</a>
+                        <a class="nav-link" href="/subscriptions"><i class="fas fa-shopping-cart"></i> &nbsp;Get More Lessons</a>
                     </li>
 
                     <li class="nav-item dropdown">

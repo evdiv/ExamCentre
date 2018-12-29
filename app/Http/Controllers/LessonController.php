@@ -3,22 +3,23 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Services\LessonService;
 use App\Lesson;
 
 class LessonController extends Controller
 {
+    protected $lessonService;
 
-    public function __construct()
+    public function __construct(LessonService $lessonService)
     {
         $this->middleware('auth');
+        $this->lessonService = $lessonService;
     }
 
 
     public function index()
     {
-        $lessons = auth()->user()->lessons;
-
-        return view('lessons', compact('lessons'));
+        return view('lessons');
     }
 
 
@@ -33,9 +34,14 @@ class LessonController extends Controller
     public function update(Lesson $lesson)
     {
         $this->authorize('view', $lesson);
-
         $lesson->update(request(['completed']));
 
-        return redirect()->back();
+        if($lesson->completed) {
+            $msg = "Exam has been completed. We saved your recordings, so now you can send it for evaluation.";
+        } else {
+            $msg = "Your recording has been deleted. Now you can take the Speaking Exam again.";
+        }
+
+        return redirect('/lessons')->with('success', $msg);
     }
 }

@@ -29,7 +29,6 @@ class Lesson extends Model
 
     public function evaluation()
     {
-        return $this->hasOne(Evaluation::class);
+        return $this->belongsTo(Evaluation::class);
     }
-
 }

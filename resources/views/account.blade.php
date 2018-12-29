@@ -3,6 +3,13 @@
 @section('content')
     <div class="container">
 
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/lessons/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Settings</li>
+            </ol>
+        </nav>
+
         @include('layouts.errors')
 
         <div class="row justify-content-center">
@@ -10,18 +17,18 @@
                 <div class="card">
                     <div class="card-header">Personal Details</div>
                     <div class="card-body">
-                        {{ Auth::user()->name }}<br/>
-                        Email: {{ Auth::user()->email }}<br/>
-                        Country: {{ Auth::user()->country }}<br/><br/>
+                        <i class="fas fa-user text-black-50"></i> {{ $user->name }} / {{ $user->occupation->name }}<br/>
+
+                        <i class="fas fa-envelope text-black-50"></i> Email: {{ $user->email }}<br/>
+                        <i class="fas fa-map-marker-alt text-black-50"></i> Country: {{ $user->country }}<br/><br/>
 
                         <small>
-                            @if (Auth::user()->updated_at)
-                                Updated {{ Auth::user()->updated_at }}
+                            @if ( $user->updated_at )
+                                Updated {{ $user->updated_at->diffForHumans() }}
                             @else
-                                Created {{ Auth::user()->created_at }}
+                                Created {{ $user->created_at->diffForHumans() }}
                             @endif
                         </small>
-
                     </div>
                 </div>
             </div>
@@ -48,7 +55,7 @@
 
                                 <div class="col-md-8">
                                     <input type="text" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}"
-                                           name="name" value="{{ Auth::user()->name }}" required autofocus>
+                                           name="name" value="{{ $user->name }}" required autofocus>
 
                                     @if ($errors->has('name'))
                                         <span class="invalid-feedback" role="alert">
@@ -64,7 +71,7 @@
 
                                 <div class="col-md-8">
                                     <input type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}"
-                                           name="email" value="{{ Auth::user()->email }}" required>
+                                           name="email" value="{{ $user->email }}" required>
 
                                     @if ($errors->has('email'))
                                         <span class="invalid-feedback" role="alert">
@@ -78,7 +85,7 @@
                                 <label for="birthday" class="col-md-4 col-form-label text-md-right">Date of Birth</label>
 
                                 <div class="col-md-8">
-                                    <input type="date" class="form-control" name="birthday" value="{{ Auth::user()->birthday }}">
+                                    <input type="date" class="form-control" name="birthday" value="{{ $user->birthday }}">
                                 </div>
                             </div>
                             
@@ -87,7 +94,7 @@
                                 <label for="country" class="col-md-4 col-form-label text-md-right">Country</label>
 
                                 <div class="col-md-8">
-                                    <input type="text" class="form-control" name="country" value="{{ Auth::user()->country }}">
+                                    <input type="text" class="form-control" name="country" value="{{ $user->country }}">
                                 </div>
                             </div>
 
@@ -116,9 +123,10 @@
                             </div>
 
 
-                            <div class="col-md-6 offset-md-3">
-                                <input type="submit" class="btn btn-block btn-lg btn-primary" value="Update">
-                            </div>
+
+                                <div class="text-right">
+                                    <input type="submit" class="btn btn-info" value="Update">
+                                </div>    
 
                         </form>
 

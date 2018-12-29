@@ -15,7 +15,8 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example-component', require('./components/ExampleComponent.vue'));
+Vue.component('stripe-checkout', require('./components/CheckoutComponent.vue'));
+Vue.component('stripe-form', require('./components/StripeFormComponent.vue'));
 
 const app = new Vue({
     el: '#app'

@@ -15,9 +15,7 @@ class CreateEvaluationsTable extends Migration
     {
         Schema::create('evaluations', function (Blueprint $table) {
             $table->increments('id');
-            $table->integer('lesson_id');
-            $table->integer('transaction_id')->default('0');
-            $table->tinyInteger('completed')->default('0');
+            $table->double('mark')->default('0');
             $table->string('report_src')->nullable();
             $table->text('notes')->nullable();
             $table->timestamps();

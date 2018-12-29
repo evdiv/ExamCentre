@@ -20,6 +20,7 @@ class DatabaseSeeder extends Seeder
             SubscriptionsTableSeeder::class,
             TransactionsTableSeeder::class,
             UsersTableSeeder::class,
+            EvaluationsTableSeeder::class
         ]);
     }
 }

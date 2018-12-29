@@ -2,10 +2,21 @@
 
 @section('content')
     <div class="container">
+
+        <nav aria-label="breadcrumb">
+            <ol class="breadcrumb">
+                <li class="breadcrumb-item"><a href="/lessons/">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">{{ $lesson->exam->title }}</li>
+            </ol>
+        </nav>
+
+
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card shadow">
-                    <div class="card-header"><h4>{{ $lesson->exam->title }}</h4></div>
+                    <div class="card-header">
+                        <h5>{{ $lesson->exam->title }}</h5>
+                    </div>
 
                     <div class="card-body">
                         @if (session('status'))

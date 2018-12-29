@@ -15,9 +15,10 @@ class CreateLessonsTable extends Migration
     {
         Schema::create('lessons', function (Blueprint $table) {
             $table->increments('id');
-            $table->tinyInteger('completed')->default('0');
-            $table->integer('exam_id');
             $table->integer('user_id');
+            $table->integer('exam_id');
+            $table->integer('evaluation_id')->default('0');           
+            $table->tinyInteger('completed')->default('0');
             $table->integer('order_id')->default('0');
             $table->text('notes')->nullable();
             $table->timestamps();

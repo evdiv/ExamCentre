@@ -4,14 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\RegistersUsers;
+use Illuminate\Http\Request;
 use App\Services\UserService;
 
 class RegisterController extends Controller
 {
     use RegistersUsers;
 
-
-    protected $redirectTo = '/lessons';
     protected $userService;
 
 
@@ -19,6 +18,14 @@ class RegisterController extends Controller
     {
         $this->middleware('guest');
         $this->userService = $userService;
+    }
+
+    protected function redirectTo()
+    {
+        if(!empty(request('subscription'))) {
+            return '/subscriptions/' . request('subscription'); // return dynamicaly generated URL.
+        }
+        return '/lessons'; // return dynamicaly generated URL.
     }
 
 

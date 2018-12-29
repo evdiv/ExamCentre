@@ -24,18 +24,17 @@ class OrderService
 	}
 
 
-	public function store($request)
+	public function store($subscriptionId)
 	{
-        if(auth()->guest()) {
+        // if(auth()->guest()) {
 
-            $user = $this->userService->register($request->all());
-            auth()->login($user);
-        }
+        //     $user = $this->userService->register($request->all());
+        //     auth()->login($user);
+        // }
 
-        $id = $request->route('id');
-        $subscription = $this->subscriptionService->getById($id);
+        $subscription = $this->subscriptionService->getById($subscriptionId);
 
-        if(!$this->subscriptionService->hasAvailableExams($id)) {
+        if(!$this->subscriptionService->hasAvailableExams($subscriptionId)) {
             return;
         }
 

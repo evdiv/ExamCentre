@@ -30,6 +30,7 @@ class SubscriptionController extends Controller
         if($this->subscriptionService->hasAvailableExams($id)) {
             return view('subscription', compact('subscription'));
         }
+        
         return view('subscription', compact('subscription'))->withErrors('The subscription is not available at the moment');
     }
 }

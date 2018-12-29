@@ -22,7 +22,7 @@ class User extends Authenticatable
 
     public function occupation()
     {
-        return $this->hasOne(Occupation::class);
+        return $this->belongsTo(Occupation::class);
     }
 
 

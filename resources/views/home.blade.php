@@ -5,18 +5,60 @@
 
         <div class="jumbotron jumbotron-fluid">
             <div class="container">
-                <h1 class="display-4">Here will be:</h1>
-                <ul>
-                    <li>Header Image</li>
-                    <li>Service Description</li>
-                    <li>Animated intro</li>
-                    <li>List of advantages</li>
-                    <li>List of Subscription Plans (one plan can be free, so the user can use our testing method)</li>
-                    <li>Button to ask a question with modal form</li>
-                </ul>
+                <h1 class="display-4">Welcome to IELTS Speaking Exams</h1>
             </div>
         </div>
 
+        <hr />
+
+        <div class="row">
+            @foreach($subscriptions as $subscription)
+                <div class="col-md-4">
+                    <div class="card shadow">
+
+                        <div class="card-header">
+                            <h4 class="my-0 font-weight-normal">{{ $subscription->title }}</h4>
+                        </div>
+
+                        <div class="card-body">
+                            <p class="card-text">
+                                {{ $subscription->description }}
+                            </p>
+                            <h1 class="display-4">
+                                @if($subscription->price > 0)
+                                    ${{ $subscription->price }}
+                                @else
+                                    Free
+                                @endif
+                            </h1>
+                            <a href="/subscriptions/{{ $subscription->id }}" class="btn btn-info btn-lg btn-block">Subscribe</a>
+                        </div>
+                    </div>
+                </div>
+            @endforeach
+        </div>
+
+
+        <div class="row" style="margin: 40px 0;">
+
+            <div class="col-md-8">
+                <div class="card">
+                     <div class="card-body">
+                        <p class="card-text">
+                            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua. Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
+                            labore et dolore magna aliqua.
+                        </p>
+                    </div>
+                </div>    
+            </div>
+            <div class="col-md-4">
+                Here will be an Image
+            </div>
+        </div>
+
+        <hr />
 
         <div class="row">
             <div class="col-md-3">
@@ -70,36 +112,6 @@
                 </div>
             </div>
 
-        </div>
-
-        <hr />
-
-
-        <div class="row">
-            @foreach($subscriptions as $subscription)
-                <div class="col-md-4">
-                    <div class="card shadow">
-
-                        <div class="card-header">
-                            <h4 class="my-0 font-weight-normal">{{ $subscription->title }}</h4>
-                        </div>
-
-                        <div class="card-body">
-                            <p class="card-text">
-                                {{ $subscription->description }}
-                            </p>
-                            <h1 class="display-4">
-                                @if($subscription->price > 0)
-                                    ${{ $subscription->price }}
-                                @else
-                                    Free
-                                @endif
-                            </h1>
-                            <a href="/subscriptions/{{ $subscription->id }}" class="btn btn-primary btn-lg btn-block">Subscribe</a>
-                        </div>
-                    </div>
-                </div>
-            @endforeach
         </div>
 
     </div>
