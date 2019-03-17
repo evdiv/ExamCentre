@@ -1,26 +1,26 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
 
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/lessons/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Settings</li>
-            </ol>
-        </nav>
+    <div class="container" >
+        <a href="/lessons" class="navbar-menu btn btn-success btn-sm"><i class="fas fa-arrow-circle-left fa-lg"></i> Back to Home</a>
+    </div>
+
+    <div class="container content">
 
         @include('layouts.errors')
 
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">Personal Details</div>
+                <div class="card text-white bg-info shadow">
+                    <div class="card-header">
+                        <h3>Personal Details</h3>
+                    </div>
                     <div class="card-body">
-                        <i class="fas fa-user text-black-50"></i> {{ $user->name }} / {{ $user->occupation->name }}<br/>
+                        <i class="fas fa-user"></i> {{ $user->name }} / {{ $user->occupation->name }}<br/>
 
-                        <i class="fas fa-envelope text-black-50"></i> Email: {{ $user->email }}<br/>
-                        <i class="fas fa-map-marker-alt text-black-50"></i> Country: {{ $user->country }}<br/><br/>
+                        <i class="fas fa-envelope"></i> Email: {{ $user->email }}<br/>
+                        <i class="fas fa-map-marker-alt"></i> Country: {{ $user->country }}<br/><br/>
 
                         <small>
                             @if ( $user->updated_at )
@@ -35,8 +35,10 @@
 
 
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Update your details</div>
+                <div class="card text-white bg-info shadow">
+                    <div class="card-header">
+                        <h3>Update your details</h3>
+                    </div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -125,7 +127,7 @@
 
 
                                 <div class="text-right">
-                                    <input type="submit" class="btn btn-info" value="Update">
+                                    <button type="submit" class="btn btn-success"><i class="fas fa-sync-alt"></i> &nbsp;&nbsp;Update</button>
                                 </div>    
 
                         </form>

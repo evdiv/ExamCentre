@@ -2,34 +2,42 @@
 
 @section('content')
 
-    <div class="container">
+    @if(auth()->check())
 
-        @if(auth()->check())
-            <nav aria-label="breadcrumb">
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item"><a href="/lessons/">Home</a></li>
-                    <li class="breadcrumb-item active" aria-current="page"><a href="/subscriptions">Subscriptions</a></li>
-                    <li class="breadcrumb-item active" aria-current="page">{{ $subscription->title }}</li>
-                </ol>
-            </nav>
-        @endif
+        <div class="container" >
+            <a href="/lessons" class="navbar-menu btn btn-success btn-sm"><i class="fas fa-arrow-circle-left fa-lg"></i> Back to Home</a>
+            <a href="/subscriptions" class="navbar-menu btn btn-success btn-sm"><i class="far fa-list-alt fa-lg"></i> All Exam Packages</a></li>
+        </div>
 
+    @endif
+
+    <div class="container content">
 
         @if(count($errors->all()) > 0)
-            <div class="alert alert-danger">
-                {{ $errors->first() }}<br/>{{ url()->previous() }}
-                <a href='/'>Return to the main page</a>
+           <div class="row justify-content-center">
+                <div class="col-sm-8">
+                    <div class="alert alert-danger">
+                        <p>{{ $errors->first() }}</p>
+                        <p><a class='btn btn-info' href='/subscriptions'>Return to Exam Packages</a></p>
+                    </div>
+                </div>
             </div>
+        @endif
+
+        @guest
+            @include('auth.register')
         @else
-            <hr style="margin-bottom: 40px;" />
-
-            @guest
-                @include('auth.register')
-            @else
-                <stripe-form :subscription="{{ $subscription }}"></stripe-form>
-            @endguest
-
-        @endif   
+            <stripe-form :product="{{ $subscription }}">
+                <template slot="paypal">
+                    <form method="POST" action="/paypal">
+                        {{ csrf_field() }}
+                        <input type="hidden" name="productId" value="{{ $subscription->id }}" />
+                        <input type="hidden" name="productType" value="subscription" />
+                        <button class='btn btn-block btn-lg btn-primary'><i class="fab fa-cc-paypal fa-lg"></i>&nbsp; Pay with PayPal</button>
+                    </form>
+                </template>
+            </stripe-form>
+        @endguest
 
     </div>
 

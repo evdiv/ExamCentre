@@ -17077,3 +17077,75 @@ readers do not read off random characters that represent icons */
   font-family: 'Font Awesome 5 Brands';
 }
 
+body {
+  background-color: #f9f4dd;
+}
+
+nav.navbar-stripe {
+  background-color: #b1a07b;
+  height: 6px;
+}
+
+.navbar-menu {
+  border-radius: 0 0 8px 8px;
+}
+
+.btn-top {
+  background-color: #b1a07b;
+  color: #fff;
+}
+
+.btn-top:hover {
+  background-color: #827252;
+  color: #fff;
+}
+
+.jumbotron {
+  background-color: #e3dccc;
+  padding: 0.5rem 1rem 0.5rem 1rem;
+}
+
+.card-body {
+  padding: 0.5rem 1.25rem;
+}
+
+.content {
+  min-height: 800px;
+  margin-top: 20px;
+}
+
+.advantage-title {
+  text-shadow: 2px 2px 5px #0e7233;
+}
+
+.advantage-sub-title {
+  font-size: 16px;
+}
+
+.exam-title {
+  text-shadow: 2px 2px 5px #127d9b;
+}
+
+.exam-price {
+  text-shadow: 2px 2px 5px #14809e;
+}
+
+.review-person {
+  color: #333;
+  font-size: 20px;
+}
+
+.transparent-card {
+  border: none;
+  background-color: #f9f4dd;
+}
+
+.footer {
+  width: 100%;
+  height: 60px;
+  line-height: 60px;
+  margin-top: 100px;
+  background-color: #143944;
+  border-top: 6px solid #b1a07b;
+}
+

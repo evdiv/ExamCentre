@@ -4,18 +4,18 @@
         <div class="col-md-7"> 
             <div class="card text-white bg-info shadow">
                 <div class="card-header text-center">
-                    <h4 class="my-0 font-weight-normal">{{ subscription.title }}</h4>
+                    <h2>{{ product.title }}</h2>
                 </div>
 
                 <div class="card-body text-center">
                     <h1 class="card-title pricing-card-title">
-                        ${{ subscription.price }}<small> USD</small>
+                        ${{ product.price }}<small> USD</small>
                     </h1>
 
                     Please give us your payment details:
                     <StripeElements class='stripe-card'
                       stripe='pk_test_wSFoTlDs7VAqxbDCxnmj6MkF'
-                      :subscription = 'subscription' 
+                      :product = 'product' 
                       :options='stripeOptions'
                       @change='complete = $event.complete' />
                 </div>
@@ -27,7 +27,7 @@
         </div>
 
         <div class="col-md-7">
-             <button class='btn btn-block btn-lg btn-primary'><i class="fab fa-cc-paypal fa-lg"></i>&nbsp; Pay with PayPal</button>
+            <slot name="paypal"></slot>
         </div>
 
     </div>             
@@ -38,7 +38,7 @@
 import StripeElements from './StripeElementsComponent'
 
 export default {
-    props: ['subscription'],
+    props: ['product'],
     data () {
         return {
             stripeOptions: {

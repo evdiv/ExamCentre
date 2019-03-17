@@ -5,6 +5,8 @@ namespace App\Services;
 use Illuminate\Support\Facades\DB;
 use App\Services\ExamService;
 use App\Subscription;
+use App\Order;
+use App\Lesson;
 
 class SubscriptionService
 {
@@ -14,7 +16,7 @@ class SubscriptionService
 
     public function __construct(ExamService $examService) 
     {
-        $this->examService = $examService;
+        $this->examService = $examService;     
     }
 
 
@@ -41,6 +43,26 @@ class SubscriptionService
     }
 
 
+    public function store($id)
+    {
+        $subscription = $this->getById($id);
+
+        $order = Order::create([
+            'user_id' => auth()->id(),
+        ]);
+
+        while($subscription->exams--) {
+            Lesson::create([
+                'user_id' => auth()->id(),
+                'order_id' => $order->id,
+                'exam_id' => $this->examService->getAvailable()[0]->id
+            ]);
+        }
+
+       return $order;
+    }
+
+
     private function getForGuest() 
     {
         return Subscription::where('active', 1)
@@ -50,7 +72,7 @@ class SubscriptionService
     }
 
 
-    private function getForRegistered() 
+    public function getForRegistered() 
     {
         return Subscription::where('active', 1)
                         ->where('price', '>', 0)

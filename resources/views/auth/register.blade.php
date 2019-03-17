@@ -1,16 +1,16 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container">
+<div class="container content">
     <div class="row justify-content-center">
         <div class="col-md-7">
             <div class="card text-white bg-info shadow">
                 <div class="card-header">
                     @if(empty($subscription))
-                        <h2>Register</h2>
+                        <h2>Register and get Free Exam</h2>
                     @else
                         <h2>Register and purchase {{ $subscription->title }}</h2>
-                        <small>{{ $subscription->description }}</small>
+                        
                     @endif
                 </div>
 

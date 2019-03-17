@@ -1,6 +1,6 @@
 <template>
     <div>
-        <p class="alert alert-success" v-if="status">{{ status }}</p>
+        <p class="alert alert-success" v-if="status">Your payment was successful. Now you will be redirected to your Home Page</p>
         <p class="alert alert-danger" v-if="errors">{{ errors }}</p>
 
         <div class='credit-card-inputs' v-if="!sending">
@@ -48,7 +48,7 @@
 import { createToken, CardNumber, CardExpiry, CardCvc } from 'vue-stripe-elements-plus'
 
 export default {
-    props: [ 'stripe', 'options', 'subscription' ],
+    props: [ 'stripe', 'options', 'product' ],
 
     data () {
         return {
@@ -63,7 +63,7 @@ export default {
     },
 
     computed: {
-        btnClass: function() {
+        btnClass () {
             return {
                 'btn-success': this.complete,
                 'btn-light': !this.complete
@@ -88,15 +88,17 @@ export default {
                     this.$refs.cardNumber.focus()
                 }
             }
+
+            this.errors = false;
         },
         pay () {
             createToken().then(data => {
 
                 this.sending = true;
 
-                axios.post('/payment', { 
+                axios.post('/' + this.product.route, { 
                     stripeToken: data.token.id,
-                    subscriptionId: this.subscription.id
+                    productId: this.product.id
                 })
                 .then((response) => {
                     this.status = response.data.status;

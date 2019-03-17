@@ -1,7 +1,7 @@
-<nav class="navbar navbar-expand-md navbar-dark bg-dark">
+<nav class="navbar navbar-expand-md navbar-dark" style="padding: 0.1rem 1rem; background-color: #143944;">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
-            {{ config('app.name') }}
+            <img class="img-fluid" src="/images/logo.png" alt="logo" style="max-height: 52px;">
         </a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
             <span class="navbar-toggler-icon"></span>
@@ -19,26 +19,30 @@
                 <!-- Authentication Links -->
                 @guest
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
-                    </li>
-                    <li class="nav-item">
                         @if (Route::has('register'))
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link" href="{{ route('register') }}">Register and get Free Exam</a>
                         @endif
+                    </li>
+                
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ route('login') }}"><i style="color: #e31837;" class="fas fa-user"></i> &nbsp;{{ __('Login') }}</a>
                     </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="/subscriptions"><i class="fas fa-shopping-cart"></i> &nbsp;Get More Lessons</a>
+                        <a class="nav-link" href="/subscriptions">
+                            <i style="color: #e31837;" class="fas fa-shopping-cart"></i> 
+                        &nbsp;Buy Exams</a>
                     </li>
 
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                            {{ Auth::user()->name }} <span class="caret"></span>
+                          <i style="color: #e31837;" class="fas fa-user-circle"></i>  
+                          {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
                         <div class="dropdown-menu dropdown-menu-right" aria-labelledby="navbarDropdown">
 
-                            <a class="dropdown-item" href="/lessons/">My Lessons</a>
+                            <a class="dropdown-item" href="/lessons/">My Exams</a>
                             <a class="dropdown-item" href="/account/">Settings</a>
 
                             <a class="dropdown-item" href="{{ route('logout') }}"
@@ -53,6 +57,9 @@
                         </div>
                     </li>
                 @endguest
+                <li class="nav-item">
+                    <a class="nav-link" href="/help"><i style="color: #e31837;" class="fas fa-question"></i> &nbsp;Help</a>
+                </li>    
             </ul>
         </div>
     </div>

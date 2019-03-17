@@ -1,160 +1,204 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
 
-        <nav aria-label="breadcrumb">
-            <ol class="breadcrumb">
-                <li class="breadcrumb-item"><a href="/lessons/">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">{{ $lesson->exam->title }}</li>
-            </ol>
-        </nav>
+    <div class="container" >
+        <a href="/lessons" class="navbar-menu navbar-menu btn btn-sm btn-top"><i class="fas fa-arrow-circle-left fa-lg"></i> 
+        Cancel Exam and Back to Home</a>
+    </div>
 
+    <div class="container content">
 
         <div class="row justify-content-center">
-            <div class="col-md-8">
-                <div class="card shadow">
-                    <div class="card-header">
-                        <h5>{{ $lesson->exam->title }}</h5>
-                    </div>
-
-                    <div class="card-body">
-                        @if (session('status'))
-                            <div class="alert alert-success" role="alert">
-                                {{ session('status') }}
-                            </div>
-                        @endif
-
-   <div class="player">
-     <video class="player__video viewer" src="https://player.vimeo.com/external/194837908.sd.mp4?s=c350076905b78c67f74d7ee39fdb4fef01d12420&profile_id=164"></video>
-
-     <div class="player__controls">
-
-       <button class="player__button toggle" title="Toggle Play">►</button>
-
-     </div>
-   </div>
-
-
-
-
-                        <p>
-                            {{ $lesson->exam->description }}<br/>
-                        </p>
-                        <small>{{ $lesson->created_at }}</small>
-
-                    </div>
-                </div>
-
-                <hr/>
-
-                <script>
-
-
-// get elements
-const player = document.querySelector('.player');
-const video = player.querySelector('.viewer');
-const toggle = player.querySelector('.toggle');
-const skipButtons = player.querySelectorAll('[data-skip]');
-const ranges = player.querySelectorAll('.player__slider');
-
-// build functions
-function togglePlay() {
-    if (video.paused) {
-        video.play();
-    } else {
-        video.pause();
-    }
-    // alternatively this can be written with a ternary operator
-    /*
-    const method = video.paused ? 'play' : 'pause';
-    video[method]();
-    */
-}
-
-function spaceBarTogglePlay(e) {
-    if (e.keyCode == 32) {
-        togglePlay();
-    }
-}
-
-function updateButton() {
-    const icon = this.paused ? '►' : '❚❚';
-    toggle.textContent = icon;
-}
-
-function skip() {
-    video.currentTime += parseFloat(this.dataset.skip);
-}
-
-
-// event listeners
-video.addEventListener('click', togglePlay);
-video.addEventListener('play', updateButton);
-video.addEventListener('pause', updateButton);
-
-toggle.addEventListener('click', togglePlay);
-document.addEventListener('keypress', spaceBarTogglePlay);
-skipButtons.forEach(button => button.addEventListener('click', skip));
-
-let mousedown = false;
-
-                </script>
-
-                @if($lesson->completed && !$lesson->evaluation)
-
-                    <div class="alert alert-info">
-                        You have already completed this lesson.
-                        Now you can send its results for evaluation or take the lesson one more time.
-                        <a href="/lessons">Return to lessons</a>
-                    </div>
-
-                    <div class="text-right">
-                        <form method="POST" action="/lessons/{{ $lesson->id }}" style="display: inline-block">
-                            @csrf
-                            {{ method_field('PATCH') }}
-                            <input type="hidden" name="completed" value="0" >
-                            <input type="submit" class="btn btn-default btn-sm" value="Take this lesson again">
-                        </form>
-
-
-                        <form method="POST" action="/evaluations" style="display: inline-block">
-                            @csrf
-                            <input type="hidden" name="lesson_id" value="{{ $lesson->id }}" >
-                            <input type="submit" type="button" class="btn btn-success btn-sm" value="Send for Evaluation">
-                        </form>
-                    </div>
-
-                @elseif($lesson->evaluation && !$lesson->evaluation->completed)
-                    <div class="alert alert-info">
-                        We have received your script. It is being evaluated by our teachers at the moment.
-                        It takes us approximately 24 hours to evaluate your response.
-                        Thank you. <a href="/lessons">Return to lessons</a>
-
-                    </div>
-
-                @elseif($lesson->evaluation && $lesson->evaluation->completed)
-                    <div class="alert alert-success">
-                        Evaluation has been completed. You can download your report
-                    </div>
-
-                    <div class="text-right">
-                        <a href="#" type="button" class="btn btn-light btn-sm">Download Report</a>
-                    </div>
-
-                @else
-                    <div class="text-right">
-                        <form method="POST" action="/lessons/{{ $lesson->id }}">
-                            @csrf
-                            {{ method_field('PATCH') }}
-                            <input type="hidden" name="completed" value="1" >
-                            <input type="submit" type="button" class="btn btn-info btn-sm" value="Complete">
-                        </form>
+            <div class="col-sm-8">
+                @if (session('status'))
+                    <div class="alert alert-success" role="alert">
+                        {{ session('status') }}
                     </div>
                 @endif
+            </div>
+        </div>        
+
+        <div class="row justify-content-center">
+
+            @if($lesson->completed && !$lesson->evaluation)
+            
+                <div class="col-sm-8">
+                    <div class="card text-white bg-info shadow">
+                        <div class="card-header">
+                            <h2>Exam has been completed</h2>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="alert alert-success">
+                                You have already completed this lesson.<br/>
+                                You can either send your recordings for evaluation or take the exam again.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert text-right">
+                        <a href="#" class="btn btn-danger" 
+                            data-toggle="modal" data-target="#retakeConfirmationModal"
+                            data-toggle="tooltip" data-placement="top" title="Retake the exam">
+                            <i class="fas fa-sync"></i> Take the Exam Again
+                        </a>
+
+                        <a href="/lessons" class="btn btn-info" 
+                            data-toggle="tooltip" data-placement="top" title="Return to lessons">Return to Exams
+                        </a>
 
 
+                        <a href="#" class="btn btn-success" 
+                            data-toggle="modal" data-target="#evaluateConfirmationModal"
+                            data-toggle="tooltip" data-placement="top" title="Send for evaluation">
+                            <i class="far fa-share-square"></i> Send for evaluation
+                        </a>
+                    </div>
+                </div>    
+    
+            @elseif($lesson->evaluation && !$lesson->evaluation->mark)
+
+                <div class="col-sm-8">
+                    <div class="card text-white bg-info shadow">
+                        <div class="card-header">
+                            <h2>Exam is on evaluation</h2>
+                        </div>
+                        <div class="card-body">
+                            <div class="alert alert-success">
+                                We have received your recording. It is being evaluated by our teachers at the moment.<br/>
+                                Evaluation takes us approximately 24 hours.
+                                Thank you.
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="alert text-right">
+                        <a href="/lessons" class="btn btn-info" 
+                            data-toggle="tooltip" data-placement="top" title="Return to lessons">Return to Exams
+                        </a>
+                    </div>
+                </div>    
+
+            @elseif($lesson->evaluation && $lesson->evaluation->mark)
+
+                <div class="col-sm-8">
+                    <div class="card shadow">
+                        <div class="card-header">
+                            <h5>Evaluation has been completed</h5>
+                        </div>
+
+                        <div class="card-body">
+                            <div class="alert alert-success">
+                                Evaluation has been completed. You can download your report
+                            </div>
+                        </div>
+                    </div>                        
+
+                    <div class="alert text-right">
+                        <a href="/reports/{{ auth()->user()->id }}/{{ $lesson->evaluation->report_src}}" class="btn btn-success"><i class="fas fa-download"></i> &nbsp;Download Report</a>
+                    </div>
+                </div>    
+
+            @else
+
+                <div class="col-sm-12">
+                    <div class="card shadow">
+                        <div class="card-body" style="padding: 0.2em;">
+                            <div class="player">
+                                <recorder id="{{ $lesson->id }}" 
+                                    src="/exams/{{ $lesson->exam->src }}" 
+                                    intervals-str="{{ $lesson->exam->intervals }}"
+                                    second-part-start="{{ $lesson->exam->secondPartStart }}"
+                                    length="{{ $lesson->exam->length }}"></recorder>
+                            </div>
+                        </div>    
+                    </div>                         
+                </div>    
+
+            @endif
+
+        </div>
+    </div>
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="retakeConfirmationModal" tabindex="-1" role="dialog" 
+        aria-labelledby="retakeConfirmationModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Retake this Exam?</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    <img src="/images/danger-notification.jpg" class="float-right" alt="...">
+                    Do you want to retake the Exam?<br/>
+                    If you click 'retake' your records will be deleted.
+                </div>
+                <div class="modal-footer">
+
+                    <form method="POST" action="/lessons/{{ $lesson->id }}" style="display: inline-block;">
+                        @csrf
+                        {{ method_field('PATCH') }}
+                        <input type="hidden" name="completed" value="0" >
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <button type="submit" class="btn btn-danger">
+                                <i class="fas fa-sync"></i> &nbsp;Retake the exam
+                        </button>
+                    </form>
+
+                </div>
             </div>
         </div>
     </div>
+    <!--/ Modal -->
+
+
+    <!-- Modal -->
+    <div class="modal fade" id="evaluateConfirmationModal" tabindex="-1" role="dialog" 
+        aria-labelledby="evaluateConfirmationModal" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    @if($lesson->exam->id > 1)
+                        <h5 class="modal-title">Send for evaluation?</h5>
+                    @else 
+                        <h5 class="modal-title">Sending for evaluation is not available for Demo Exams</h5>
+                    @endif
+
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+
+                <div class="modal-body">
+                    @if($lesson->exam->id > 1)
+                        <img src="/images/notification.jpg" class="float-right" alt="...">
+                        Your speaking will be evaluated by our teachers who takes the real IELTS exams.<br/>
+                        After evaluation you receive the report with the estimate IELTS mark for your speaking.
+                    @else 
+                        <img src="/images/danger-notification.jpg" class="float-right" alt="...">
+                       Demo Exams are not available for evaluation proccess. <br/>
+                       This option is available only for Regular Exams that can be purchased <a href='/subscriptions'>here</a>.<br/>
+                        Thank you for using our service.
+                    @endif
+
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                    @if($lesson->exam->id > 1)
+                        <a href="/evaluate/{{ $lesson->id }}" class="btn btn-success">
+                            <i class="far fa-share-square"></i> &nbsp;Send for evaluation
+                        </a>
+                    @endif
+                </div>
+            </div>
+        </div>
+    </div>
+    <!--/ Modal -->
+
 @endsection

@@ -1,23 +1,25 @@
 @extends('layouts.app')
 
 @section('content')
-    <div class="container">
+
+    <div class="container content">
 
         @include('layouts.errors')
 
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <div class="card">
-                    <div class="card-header">Personal Details
+                <div class="card text-white bg-info shadow">
+                    <div class="card-header">
+                        <h3>Personal Details &nbsp;<small>
                         <a href="/account">
-                            <span class="badge badge-pill badge-info"><i class="fas fa-wrench"></i> Edit</span>
-                        </a>
+                            <span class="badge badge-dark"><i class="fas fa-wrench"></i> &nbsp;Edit</span>
+                        </a></small></h3>
                     </div>
                     <div class="card-body">
-                        <i class="fas fa-user text-black-50"></i> {{ $user->name }} / {{ $user->occupation->name }}<br/>
+                        <i class="fas fa-user"></i> {{ $user->name }} / {{ $user->occupation->name }}<br/>
 
-                        <i class="fas fa-envelope text-black-50"></i> Email: {{ $user->email }}<br/>
-                        <i class="fas fa-map-marker-alt text-black-50"></i> Country: {{ $user->country }}<br/><br/>
+                        <i class="fas fa-envelope"></i> {{ $user->email }}<br/>
+                        <i class="fas fa-map-marker-alt"></i> {{ $user->country }}<br/><br/>
 
                         <small>
                             @if ( $user->updated_at )
@@ -32,8 +34,10 @@
 
 
             <div class="col-md-8">
-                <div class="card">
-                    <div class="card-header">Your Lessons</div>
+                <div class="card text-white bg-info shadow">
+                    <div class="card-header">
+                        <h3>Your Lessons</h3>
+                    </div>
 
                     <div class="card-body">
                         @if (session('status'))
@@ -46,19 +50,19 @@
 
                                 <thead>
                                     <tr>
-                                        <th scope="col"></th>
+                                        <th class="text-center" scope="col"></th>
                                         <th scope="col">Exam</th>
-                                        <th scope="col">Added</th>
-                                        <th scope="col">Completed</th>
-                                        <th scope="col">IELTS Mark</th>
-                                        <th scope="col">Actions</th>
+                                        <th class="text-center" scope="col">Added</th>
+                                        <th class="text-center" scope="col">Completed</th>
+                                        <th class="text-center" scope="col">IELTS Score</th>
+                                        <th class="text-center" scope="col">Actions</th>
                                     </tr>
                                 </thead>
 
 
                                 <tbody>
                                     @if($lessons['active']->count() > 0)
-                                        <tr class="table-light">
+                                        <tr>
                                             <td></td>
                                             <td><h6 style="margin-top: 20px;">Active Lessons</h6></td>
                                             <td></td>
@@ -71,13 +75,16 @@
                                     @foreach($lessons['active'] as $lesson)
                                         <tr>
                                             <td></td>
-                                            <td><a href="/lessons/{{ $lesson->id }}" class="btn btn-info btn-sm">
-                                                {{ $lesson->exam->title }}</a></td>
-                                            <td><small>{{ $lesson->created_at->diffForHumans() }}</small></td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td><a href="/lessons/{{ $lesson->id }}" 
-                                                class="btn btn-info btn-sm"
+                                            <td>
+                                                <a href="/lessons/{{ $lesson->id }}">
+                                                    <img src="/images/{{ $lesson->exam->preview }}" class="img-thumbnail" alt="{{ $lesson->exam->title }}">
+                                                </a>
+                                            </td>
+                                            <td class="text-center"><small>{{ $lesson->created_at->diffForHumans() }}</small></td>
+                                            <td class="text-center">...</td>
+                                            <td class="text-center">...</td>
+                                            <td class="text-center"><a href="/lessons/{{ $lesson->id }}" 
+                                                class="btn btn-success btn-sm"
                                                 data-toggle="tooltip" data-placement="top" title="Take a Speaking Exam">
                                                 <i class="far fa-eye"></i></a></td>
                                         </tr>
@@ -88,7 +95,7 @@
                                         || $lessons['onEvaluation']->count() > 0
                                         || $lessons['evaluated']->count() > 0)
 
-                                        <tr class="table-light">
+                                        <tr>
                                             <td></td>
                                             <td><h6 style="margin-top: 20px;">Completed Lessons</h6></td>
                                             <td></td>
@@ -103,22 +110,26 @@
 
                                         <tr>
                                             <td></td>
-                                            <td><a href="/lessons/{{ $lesson->id }}" class="btn btn-info btn-sm">
-                                                {{ $lesson->exam->title }}</a></td>
-                                            <td><small>{{ $lesson->created_at->diffForHumans() }}</small></td>
-                                            <td><small>{{ $lesson->updated_at->diffForHumans() }}</small></td>
-                                            <td>...</td>
                                             <td>
+                                                <a href="/lessons/{{ $lesson->id }}">
+                                                    <img src="/images/{{ $lesson->exam->preview }}" class="img-thumbnail" alt="{{ $lesson->exam->title }}">
+                                                </a>
+                                            </td>
+                                            <td class="text-center"><small>{{ $lesson->created_at->diffForHumans() }}</small></td>
+                                            <td class="text-center text-light">
+                                                <i class="far fa-check-circle fa-lg"></i></td>
+                                            <td class="text-center">...</td>
+                                            <td class="text-center">
 
                                                 <a href="#" 
-                                                    class="btn btn-info btn-sm" 
+                                                    class="btn btn-danger btn-sm" 
                                                     data-toggle="modal" data-target="#retakeConfirmationModal-{{ $lesson->id }}"
                                                     data-toggle="tooltip" data-placement="top" title="Retake the exam">
                                                     <i class="fas fa-sync"></i>
                                                 </a>
 
                                                 <a href="#" 
-                                                    class="btn btn-info btn-sm" 
+                                                    class="btn btn-success btn-sm" 
                                                     data-toggle="modal" data-target="#evaluateConfirmationModal-{{ $lesson->id }}"
                                                     data-toggle="tooltip" data-placement="top" title="Send for evaluation">
                                                     <i class="far fa-share-square"></i>
@@ -130,7 +141,7 @@
                                                 <div class="modal fade" id="retakeConfirmationModal-{{ $lesson->id }}" tabindex="-1" role="dialog" 
                                                     aria-labelledby="retakeConfirmationModal-{{ $lesson->id }}" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
+                                                        <div class="modal-content text-dark">
                                                             <div class="modal-header">
                                                                 <h5 class="modal-title">Retake this Exam?</h5>
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
@@ -138,9 +149,10 @@
                                                                 </button>
                                                             </div>
 
-                                                            <div class="modal-body">
+                                                            <div class="modal-body text-left">
+                                                                <img src="/images/danger-notification.jpg" class="float-right" alt="...">
                                                                 Do you really want to retake the Exam?<br/>
-                                                                If you click retake your last recording will be deleted.
+                                                                If you click 'retake' your last recording will be deleted.
                                                             </div>
                                                             <div class="modal-footer">
 
@@ -149,7 +161,7 @@
                                                                     {{ method_field('PATCH') }}
                                                                     <input type="hidden" name="completed" value="0" >
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                    <button type="submit" class="btn btn-primary">
+                                                                    <button type="submit" class="btn btn-danger">
                                                                             <i class="fas fa-sync"></i> &nbsp;Retake the exam
                                                                     </button>
                                                                 </form>
@@ -165,28 +177,42 @@
                                                 <div class="modal fade" id="evaluateConfirmationModal-{{ $lesson->id }}" tabindex="-1" role="dialog" 
                                                     aria-labelledby="evaluateConfirmationModal-{{ $lesson->id }}" aria-hidden="true">
                                                     <div class="modal-dialog" role="document">
-                                                        <div class="modal-content">
+                                                        <div class="modal-content text-dark">
                                                             <div class="modal-header">
-                                                                <h5 class="modal-title">Send for evaluation?</h5>
+
+                                                                @if($lesson->exam->id > 1)
+                                                                    <h5 class="modal-title">Send for evaluation?</h5>
+                                                                @else 
+                                                                    <h5 class="modal-title">Sending for evaluation is not available for Demo Exams</h5>
+                                                                @endif
+
                                                                 <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                                                                     <span aria-hidden="true">&times;</span>
                                                                 </button>
                                                             </div>
 
-                                                            <div class="modal-body">
-                                                                Your speaking will be evaluated our teachers who takes real IELTS exam.<br/>
-                                                                After evaluation you will receive the report with and the mark that you will probably receieve on the real IELTS Exam.
+                                                            <div class="modal-body text-left">
+
+                                                                @if($lesson->exam->id > 1)
+                                                                    <img src="/images/notification.jpg" class="float-right" alt="...">
+                                                                    Your speaking will be evaluated by our teachers.<br/>
+                                                                    After evaluation you will receive the report with and the mark that you will probably receieve on the real IELTS Exam.<br/><br/><br/>
+                                                                    <h3>Evaluation cost is 11.99 USD</h3>
+                                                                @else 
+                                                                    <img src="/images/danger-notification.jpg" class="float-right" alt="...">
+                                                                   Demo Exams are not available for evaluation. <br/>
+                                                                   This option will be available for any Regular Exam that you can purchase <a href='/subscriptions'>here</a>.<br/>
+                                                                    Thank you for using our service.
+                                                                @endif
                                                             </div>
                                                             <div class="modal-footer">
+                                                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                                                                @if($lesson->exam->id > 1)
+                                                                    <a href="/evaluate/{{ $lesson->id }}" class="btn btn-success">
+                                                                        <i class="far fa-share-square"></i> &nbsp;Send for evaluation
+                                                                    </a>
+                                                                @endif    
 
-                                                                <form method="POST" action="/evaluations" style="display: inline-block;">
-                                                                    @csrf
-                                                                    <input type="hidden" name="lesson_id" value="{{ $lesson->id }}" >
-                                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                                                                    <button type="submit" class="btn btn-primary">
-                                                                            <i class="far fa-share-square"></i> &nbsp;Send for evaluation
-                                                                    </button>
-                                                                </form>
                                                             </div>
                                                         </div>
                                                     </div>
@@ -200,25 +226,34 @@
                                     @foreach($lessons['onEvaluation'] as $lesson)
                                         <tr>
                                             <td></td>
-                                            <td><a href="/lessons/{{ $lesson->id }}" class="btn btn-info btn-sm">
-                                                {{ $lesson->exam->title }}</a></td>
-                                            <td><small>{{ $lesson->created_at->diffForHumans() }}</small></td>
-                                            <td><small>{{ $lesson->updated_at->diffForHumans() }}</small></td>
-                                            <td>...</td>
-                                            <td><small>on evaluation...</small></td>
+                                            <td>
+                                                <a href="/lessons/{{ $lesson->id }}">
+                                                    <img src="/images/{{ $lesson->exam->preview }}" class="img-thumbnail" alt="{{ $lesson->exam->title }}">
+                                                </a>
+                                            </td>
+                                            <td class="text-center"><small>{{ $lesson->created_at->diffForHumans() }}</small></td>
+                                            <td class="text-light text-center"><i class="far fa-check-circle fa-lg"></i></td>
+                                            <td class="text-center">...</td>
+                                            <td class="text-center">
+                                                <h5><span class="badge badge-warning"
+                                                    data-toggle="tooltip" data-placement="top" title="The Exam is on evaluation at the moment. Usually the evaluation process takes us 24 hours to complete.">on evaluation...</span></h5>
+                                            </td>
                                         </tr>
                                     @endforeach
 
                                     @foreach($lessons['evaluated'] as $lesson)
                                         <tr>
                                             <td></td>
-                                            <td><a href="/lessons/{{ $lesson->id }}" class="btn btn-info btn-sm">
-                                                {{ $lesson->exam->title }}</a></td>
-                                            <td><small>{{ $lesson->created_at->diffForHumans() }}</small></td>
-                                            <td><small>{{ $lesson->updated_at->diffForHumans() }}</small></td>
-                                            <td><span class="badge badge-pill badge-danger">{{ $lesson->evaluation->mark }}</span></td>
-                                            <td><a href="/lessons/{{ $lesson->id }}" 
-                                                class="btn btn-info btn-sm"
+                                            <td>
+                                                <a href="/lessons/{{ $lesson->id }}">
+                                                    <img src="/images/{{ $lesson->exam->preview }}" class="img-thumbnail" alt="{{ $lesson->exam->title }}">
+                                                </a>
+                                            </td>
+                                            <td class="text-center"><small>{{ $lesson->created_at->diffForHumans() }}</small></td>
+                                            <td class="text-light text-center"><i class="far fa-check-circle fa-lg"></i></td>
+                                            <td class="text-center"><span class="badge badge-pill badge-danger">{{ $lesson->evaluation->mark }}</span></td>
+                                            <td class="text-center"><a href="/lessons/{{ $lesson->id }}" 
+                                                class="btn btn-success btn-sm"
                                                 data-toggle="tooltip" data-placement="top" title="View the evaluation report">
                                                 <i class="far fa-file-alt"></i></a>
                                             </td>

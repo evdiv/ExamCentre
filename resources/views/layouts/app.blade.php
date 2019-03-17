@@ -16,7 +16,9 @@
     
     <!-- Styles -->
     <link type="text/css" rel="stylesheet" href="{{ mix('css/app.css') }}">
-
+    
+    <!-- Fonts -->
+    <link href="https://fonts.googleapis.com/css?family=Satisfy" rel="stylesheet">
 
 </head>
 <body>
@@ -24,9 +26,13 @@
 
         @include('layouts.navbar')
 
-        <main class="py-4">
+        <main>
+            <nav class="navbar-stripe"></nav>
+
             @yield('content')
         </main>
+
+        @include('layouts.footer')
     </div>
 </body>
 </html>

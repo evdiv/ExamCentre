@@ -23,9 +23,11 @@ class AccountController extends Controller
 
     public function update()
     {
+        $id = auth()->user()->id;
+
         $validated = request()->validate([
             'name' => 'required|max:255',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:users,email,'. $id,
             'birthday' => 'date',
             'country' => 'max:255',
             'city' => 'max:255'
