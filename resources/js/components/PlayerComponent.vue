@@ -5,18 +5,21 @@
                v-if="url" >
             <source :src="url" type='video/mp4' />
         </video>
+
     </div>
 </template>
 
 <script>
 	import videojs from 'video.js'
 	import 'video.js/dist/video-js.css'
+    import store from '../store/store';
+
 	export default {
-		props: ['url', 'examPlaying'],
+		props: ['url'],
 		data() {
 			return {
 				player: null,
-                examStarted: false,
+                currentTime: 0,
 				options: {
                     fluid: true,
                     techOrder: ["html5"],
@@ -26,31 +29,56 @@
 			}
 		},
 
+        computed: {
+            examStarted() {
+                return this.$store.getters.examStarted;
+            },
+
+            examResumed() {
+                return this.$store.getters.examResumed;
+            },
+
+            examPaused() {
+                return this.$store.getters.examPaused;
+            },
+
+            examPlaying () {
+                return (this.$store.getters.examStarted && !this.$store.getters.examPaused)
+            },
+        },
+
 		methods: {
             getPlayer(){
                 this.player = videojs('videoPlayerContainer', this.options);
             },
 
+            timeTracker() {
+                setInterval(() => {
+                    this.currentTime = Math.round(this.player.currentTime() * 10);
+                    this.$store.commit('currentTime', this.currentTime );
+                }, 100);
+            }
         },
 
         watch: {
-        	examPlaying(val) {
-        		if(val) {
-        			let started = this.player.play();
+            examStarted(val) {
+                if(val) {
+                    this.timeTracker();
+                    this.player.play(); 
+                }
+            },
 
-                    if(!this.examStarted && started !== undefined) {
-                        started.then(() => {
-                            this.$emit('player-started')
-                            this.examStarted = true
-                        })
-                    }
-
-        		} else {
-        			this.player.pause();
-                    this.$emit('time', this.player.currentTime());
-        		}
-
+        	examResumed(val) {
+                if(val) {
+                    this.player.play()
+                } 
         	},
+
+            examPaused(val) {
+                if(val) {
+                    this.player.pause()
+                }
+            }
         },
 
         mounted(){

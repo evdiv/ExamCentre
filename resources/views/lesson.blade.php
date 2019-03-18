@@ -4,7 +4,12 @@
 
     <div class="container" >
         <a href="/lessons" class="navbar-menu navbar-menu btn btn-sm btn-top"><i class="fas fa-arrow-circle-left fa-lg"></i> 
-        Cancel Exam and Back to Home</a>
+            @if($lesson->completed)
+                Back to Home
+            @else
+                Cancel Exam and Back to Home
+            @endif
+        </a>
     </div>
 
     <div class="container content">
