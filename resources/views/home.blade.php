@@ -10,8 +10,10 @@
             <div class="container">
                 <img src="/images/header-examinier.png" class="float-left" style="margin: 0 30px 40px 0;" alt="IELTS Virtual Speaking Exams Mascot">
                 <h1 class="display-4">IELTS Virtual Speaking Exams</h1>
-                <p>We have found that for many students the most difficult part is the Speaking test. This is mostly because of not knowing of what to expect on the real test, lack of practice and absende of someone who can profecionally evaluate your speach and point out on your mistakes and weak points. </p> 
-                <p>Using our service you will get an experience of the Speaking Exam in the most realistic way, all our teachers are real IELTS examenators who not only perform the exam with you but also will be able to evaluate your speaking ability according to the official IELTS evaluation standarts. Evaluation cost is 7.99 USD.
+
+                <p>We have found that for many students, the most difficult part of the IELTS Exam is the speaking section, mostly because they do not know what to expect on the real exam, do not practice enough, and do not have anyone who can professionally evaluate their speech and point out their weak points.</p> 
+                <p>Using our service, you will experience the speaking exam in the most realistic way, as all our tests are created by real IELTS examiners. Our teachers also will be able to evaluate your speaking ability according to the official IELTS evaluation standards. Evaluation cost is {{ env('EVALUATION_COST') }} USD.</p>
+
             </div>
         </div>
 
@@ -63,8 +65,7 @@
                 <div class="card transparent-card">
                      <div class="card-body" style="padding-top: 1rem;">
                         <p class="card-text">
-                            <img src="/images/virtual-exam.png" class="float-right" alt="Convinience on the Virtual IELTS Exams">
-                            <i style="font-size: 18px;">All you need for taking virtual IELTS exam is your computer, microphone and relatively silent environment aroud you. Our profeccioanl teachers will help you to to emerge into the examination process siting at home in your cousy chair. After completing any exam you will get not only the solid understanding of the examinations proccess but also you will ba able to send you recordings for evaluation. Evaluation takes 24 hours and costs 11.99 USD, on its completion you will get the report with your weak points and your estimate IELTS mark. Taking our virtual exams is easy and convenient way to significanly improve your performance on the real IELTS test. </i>
+                            <i style="font-size: 18px;">All you need to take the virtual IELTS exam is a computer, a microphone, and relatively silent surroundings. Our professional teachers will help you immerse yourself in the examination process from the comfort of your own home. After completing any of our exams, you will gain not only a solid understanding of the examination process but also be able to send your recordings for evaluation, which takes 24 hours. Upon its completion, you will receive a report with your weak points and your estimated IELTS mark. Taking our virtual exams is an easy and convenient way to significantly improve your performance on the real IELTS test.</i>
                         </p>
                     </div>
                 </div>    
@@ -81,7 +82,7 @@
                     Based on real IELTS Exams</h3></div>
                     <div class="card-body">
                         <p class="card-text">
-                            All our virtual Exam based on the real IELTS Speaking test. We are trying to make them as realistic as posible in order to provide you with the most related to the test experience.
+                            All our virtual exams are based on the real IELTS Speaking tests. We try to make them as realistic as possible in order to provide you with the most accurate test experience.
                         </p>
                     </div>
                 </div>
@@ -95,7 +96,7 @@
                     Taking by real IELTS examinators</h3></div>
                     <div class="card-body">
                         <p class="card-text">
-                            All our teachers who will be taking your exams are IELTS examinators who systimatically participating in the real IELTS Exams. They ask questions the same way as they do it on IELTS test.
+                            All our teachers who administer the exams are real IELTS examiners who systematically participate in the real IELTS exams. They ask the questions the same way as they do on the real IELTS test.
                         </p>
                     </div>
                 </div>
@@ -110,7 +111,7 @@
                     </h3></div>
                     <div class="card-body">
                         <p class="card-text">
-                            After completing the test you will be able to send your recording for evaluation. Our teachers will highlight your weak points, mistakes and mark your response accordingly to the IELTS evaluation process.
+                            After completing the test, you will be able to send your recording for evaluation. Our teachers will highlight your weak points and mark your speech according to the IELTS evaluation process.
                         </p>
                     </div>
                 </div>
@@ -125,7 +126,7 @@
                     </h3></div>
                     <div class="card-body">
                         <p class="card-text">
-                            As you know the current cost of taking IELTS Exam ranges between $215–230 USD. Using our service you can purchase an Exam with full evaluation of your records for only 17.98 USD that nearly as 12 times less. 
+                            The current cost of taking IELTS exam ranges from 215 to 230 USD. Using our service, you can purchase a virtual exam with a full evaluation for only 17.89 USD, which is around 12 times less.
                         </p>
                     </div>
                 </div>

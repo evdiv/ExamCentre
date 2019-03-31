@@ -29,7 +29,7 @@
                     </li>
                 @else
                     <li class="nav-item">
-                        <a class="nav-link" href="/subscriptions">
+                        <a class="nav-link" href="/subscriptions#subscriptions">
                             <i style="color: #e31837;" class="fas fa-shopping-cart"></i> 
                         &nbsp;Buy Exams</a>
                     </li>

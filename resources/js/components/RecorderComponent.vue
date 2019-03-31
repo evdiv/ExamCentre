@@ -1,5 +1,6 @@
 <template>
     <div class="ar">
+
         <div v-if="$store.getters.examEnded" class="row justify-content-center" style="padding: 20px 10px 10px;">
             <div class="col-sm-12 text-center">
 
@@ -21,7 +22,7 @@
 
                 <div class="col-sm-12">
                     <button v-if='!examStarted' data-toggle="modal" 
-                            data-target="#takeExamConfirmation" class="btn btn-info btn-lg btn-block">
+                            data-target="#takeExamConfirmation" class="btn btn-info btn-lg btn-block" style="font-size: 28px;">
                         <i class="fas fa-play-circle fa-lg"></i> Start Exam
                     </button>                    
 
@@ -141,6 +142,7 @@
                 selected      : {},
                 uploaderOptions : {},
                 responseMaxTime: 16, 
+                delayTime: 3000
             }
         },
 
@@ -175,7 +177,7 @@
                 return convertTimeMMSS(this.recorder.duration)
             },
             volume () {
-                if(this.recorder.duration > 3 && this.recorder.duration > (this.responseMaxTime / 5)) {
+                if(this.recorder.duration > (this.delayTime / 1000)) {
                     this.detectMute()
                 }
                 return parseFloat(this.recorder.volume)
@@ -191,22 +193,30 @@
                     return;
                 }
 
+                console.log(`Current time is ${val}, next break at ${this.intervals[0]}`) 
+
                 if(val == this.intervals[0]) {
+
+                    console.log("inside the condition");
 
                     if(parseInt(this.intervals[0]) <= 350) {   
                         console.log("introdution")  
                         this.responseMaxTime = 5
+                        this.delayTime = 2000
 
                     } else if(parseInt(this.intervals[0]) == this.secondPartStart) {
                         console.log("second part")
                         this.responseMaxTime = 110
+                        this.delayTime = 10000
 
                     } else if(parseInt(this.intervals[0]) > this.secondPartStart) {
                         console.log("third part")
                         this.responseMaxTime = 26
+                        this.delayTime = 5000
                     } else {
                         console.log("first part")
                         this.responseMaxTime = 16
+                        this.delayTime = 3000
                     }
 
                     this.startRecorder()
@@ -236,7 +246,7 @@
                 this.upload()
             },
 
-            upload() {
+            async upload() {
                 let record = this.recordList.shift();
 
                 let data = new FormData()
@@ -244,7 +254,7 @@
 
                 let settings = { headers: { 'content-type': 'multipart/form-data' } } 
 
-                axios.post('/records/' + this.id, data, settings)
+                return await axios.post('/records/' + this.id, data, settings)
                 .then((response) => {
                     console.log(response)
                 })
@@ -277,7 +287,7 @@
                 })
             },
 
-            detectMute() {
+             detectMute() {
 
                 console.log("detectiong mute")
                 if(!this.recorder.isRecording) {
@@ -297,7 +307,7 @@
 
                         console.log('recording stopped');
 
-                    }, (this.responseMaxTime / 5) * 1000)
+                    }, this.delayTime)
                 } 
             }
         },

@@ -197,7 +197,7 @@
                                                                     <img src="/images/notification.jpg" class="float-right" alt="...">
                                                                     Your speaking will be evaluated by our teachers.<br/>
                                                                     After evaluation you will receive the report with and the mark that you will probably receieve on the real IELTS Exam.<br/><br/><br/>
-                                                                    <h3>Evaluation cost is 11.99 USD</h3>
+                                                                    <h3>Evaluation cost is {{ env('EVALUATION_COST') }} USD</h3>
                                                                 @else 
                                                                     <img src="/images/danger-notification.jpg" class="float-right" alt="...">
                                                                    Demo Exams are not available for evaluation. <br/>

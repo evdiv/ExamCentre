@@ -57,7 +57,7 @@
                         <a href="#" class="btn btn-success" 
                             data-toggle="modal" data-target="#evaluateConfirmationModal"
                             data-toggle="tooltip" data-placement="top" title="Send for evaluation">
-                            <i class="far fa-share-square"></i> Send for evaluation
+                            <i class="far fa-share-square"></i> Send recordings for evaluation
                         </a>
                     </div>
                 </div>    
@@ -107,8 +107,9 @@
 
             @else
 
-                <div class="col-sm-12">
-                    <div class="card shadow">
+                <div class="col-sm-12"> 
+                    <h5 class="text-right">IELTS Speaking {{ $lesson->exam->title }}</h5> 
+                    <div class="card shadow" style="background-color: #fbfaf4">
                         <div class="card-body" style="padding: 0.2em;">
                             <div class="player">
                                 <recorder id="{{ $lesson->id }}" 

@@ -5,8 +5,8 @@
     @if(auth()->check())
 
         <div class="container" >
-            <a href="/lessons" class="navbar-menu btn btn-success btn-sm"><i class="fas fa-arrow-circle-left fa-lg"></i> Back to Home</a>
-            <a href="/subscriptions" class="navbar-menu btn btn-success btn-sm"><i class="far fa-list-alt fa-lg"></i> All Exam Packages</a></li>
+            <a href="/lessons" class="navbar-menu btn btn-top btn-sm"><i class="fas fa-arrow-circle-left fa-lg"></i> Back to Home</a>
+            <a href="/subscriptions" class="navbar-menu btn btn-top btn-sm"><i class="far fa-list-alt fa-lg"></i> All Exam Packages</a></li>
         </div>
 
     @endif
