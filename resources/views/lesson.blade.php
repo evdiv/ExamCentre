@@ -4,11 +4,7 @@
 
     <div class="container" >
         <a href="/lessons" class="navbar-menu navbar-menu btn btn-sm btn-top"><i class="fas fa-arrow-circle-left fa-lg"></i> 
-            @if($lesson->completed)
-                Back to Home
-            @else
-                Cancel Exam and Back to Home
-            @endif
+            Back to my exams
         </a>
     </div>
 
@@ -36,8 +32,12 @@
 
                         <div class="card-body">
                             <div class="alert alert-success">
-                                You have already completed this lesson.<br/>
-                                You can either send your recordings for evaluation or take the exam again.
+                                You have already completed this lesson.
+                                @if($lesson->exam->id > 1)
+                                    <br/>You can either send your recordings for evaluation or take the exam again.
+                                @else 
+                                    Since the demo exam contains only the first part of the speaking test it cannot be sent for evaluation.
+                                @endif
                             </div>
                         </div>
                     </div>
@@ -50,15 +50,19 @@
                         </a>
 
                         <a href="/lessons" class="btn btn-info" 
-                            data-toggle="tooltip" data-placement="top" title="Return to lessons">Return to Exams
+                            data-toggle="tooltip" data-placement="top" title="Return to lessons">Return to My Exams
                         </a>
 
-
-                        <a href="#" class="btn btn-success" 
-                            data-toggle="modal" data-target="#evaluateConfirmationModal"
-                            data-toggle="tooltip" data-placement="top" title="Send for evaluation">
-                            <i class="far fa-share-square"></i> Send recordings for evaluation
-                        </a>
+                        @if($lesson->exam->id > 1)
+                            <a href="#" class="btn btn-success" 
+                                data-toggle="modal" data-target="#evaluateConfirmationModal"
+                                data-toggle="tooltip" data-placement="top" title="Send for evaluation">
+                                <i class="far fa-share-square"></i> Send recordings for evaluation
+                            </a>
+                        @else 
+                            <a class="btn btn-success" href="/subscriptions#subscriptions">
+                            <i class="fas fa-shopping-cart"></i> &nbsp;Purchase Exams</a>
+                        @endif
                     </div>
                 </div>    
     
@@ -80,7 +84,7 @@
 
                     <div class="alert text-right">
                         <a href="/lessons" class="btn btn-info" 
-                            data-toggle="tooltip" data-placement="top" title="Return to lessons">Return to Exams
+                            data-toggle="tooltip" data-placement="top" title="Return to lessons">Return to My Exams
                         </a>
                     </div>
                 </div>    

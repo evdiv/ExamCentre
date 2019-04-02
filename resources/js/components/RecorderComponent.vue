@@ -142,7 +142,7 @@
                 selected      : {},
                 uploaderOptions : {},
                 responseMaxTime: 16, 
-                delayTime: 3000
+                delayTime: 2000
             }
         },
 
