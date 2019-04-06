@@ -13,7 +13,7 @@ class SubscriptionsTableSeeder extends Seeder
     {
         DB::table('subscriptions')->insert([
             'title' => 'Demo Speaking Exam',
-            'description' => 'The demo exam consists of the first part of the speaking section. You can take it as many times as you want. Although you will not be able to send your records for evaluation, you will gain a solid understanding of how our service works.',
+            'description' => 'The demo exam includes only the first part of the IELTS speaking section. Although you will not be able to send your records for evaluation, you will gain a solid understanding of how our service works.',
             'price' => 0,
             'exams' => 1,
             'active' => 1

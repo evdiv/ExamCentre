@@ -1,5 +1,10 @@
 @extends('layouts.app')
 
+@push('scripts')
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+@endpush
+
 @section('content')
 
     @if(auth()->check())

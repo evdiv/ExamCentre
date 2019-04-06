@@ -10,8 +10,7 @@
     <title>{{ config('app.name') }}</title>
 
     <!-- Scripts -->
-    <script src="https://checkout.stripe.com/checkout.js"></script>
-    <script src="https://js.stripe.com/v3/"></script>
+    @stack('scripts')
     <script src="{{ asset('js/app.js') }}" defer></script>
     
     <!-- Styles -->
