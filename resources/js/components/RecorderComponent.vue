@@ -48,8 +48,8 @@
                     
 
                 </div> -->   
-            </div>          
-{{ currentTime }} 
+            </div>           
+            <!-- {{ currentTime }} -->
 
             <!-- Modal -->
             <div class="modal fade" id="takeExamConfirmation" tabindex="-1" role="dialog" 
@@ -193,28 +193,28 @@
                     return;
                 }
 
-                console.log(`Current time is ${val}, next break at ${this.intervals[0]}`) 
+                //console.log(`Current time is ${val}, next break at ${this.intervals[0]}`) 
 
                 if(val == this.intervals[0]) {
 
-                    console.log("inside the condition");
+                    //console.log("inside the condition");
 
                     if(parseInt(this.intervals[0]) <= 350) {   
-                        console.log("introdution")  
+                        //console.log("introdution")  
                         this.responseMaxTime = 5
                         this.delayTime = 2000
 
                     } else if(parseInt(this.intervals[0]) == this.secondPartStart) {
-                        console.log("second part")
+                        //console.log("second part")
                         this.responseMaxTime = 110
                         this.delayTime = 10000
 
                     } else if(parseInt(this.intervals[0]) > this.secondPartStart) {
-                        console.log("third part")
+                        //console.log("third part")
                         this.responseMaxTime = 26
                         this.delayTime = 5000
                     } else {
-                        console.log("first part")
+                        //console.log("first part")
                         this.responseMaxTime = 16
                         this.delayTime = 3000
                     }
@@ -256,10 +256,10 @@
 
                 return await axios.post('/records/' + this.id, data, settings)
                 .then((response) => {
-                    console.log(response)
+                    //console.log(response)
                 })
                 .catch((error) => {
-                    console.log(error)
+                    //console.log(error)
                 });
             },
 
@@ -289,7 +289,7 @@
 
              detectMute() {
 
-                console.log("detectiong mute")
+                //console.log("detectiong mute")
                 if(!this.recorder.isRecording) {
                     return
                 }
@@ -300,12 +300,12 @@
                 
                 } else if(this.recorder.volume == 0 && typeof this.muteTimer == 'undefined') {
 
-                    console.log("setting timeout. will be waiting for " + this.responseMaxTime / 5 + "sec");
+                   // console.log("setting timeout. will be waiting for " + this.responseMaxTime / 5 + "sec");
                     this.muteTimer = setTimeout(() => {
                         this.stopRecorder()
                         this.resumeExam()
 
-                        console.log('recording stopped');
+                       // console.log('recording stopped');
 
                     }, this.delayTime)
                 } 
