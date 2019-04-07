@@ -5,7 +5,8 @@ namespace App\Services;
 use App\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Support\Facades\Hash;
-
+use App\Mail\RegistrationCompleted;
+use Illuminate\Support\Facades\Mail;
 
 class UserService
 {
@@ -19,6 +20,14 @@ class UserService
             'occupation_id' => $data['occupation_id'],            
             'password' => Hash::make($data['password']),
         ]);
+
+        Mail::to($user->email)->send(
+            new RegistrationCompleted($user)
+        );
+
+        Mail::to(env('MAIL_ADMIN_ADDRESS'))->send(
+            new RegistrationCompleted($user)
+        );
 
        return $user;
 	}

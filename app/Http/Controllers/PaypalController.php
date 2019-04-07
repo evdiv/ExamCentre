@@ -2,8 +2,11 @@
 namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Input;
+use Illuminate\Support\Facades\Mail;
 use App\Services\SubscriptionService;
 use App\Services\LessonService;
+use App\Mail\ExamPurchased;
+use App\Mail\EvaluationPurchased;
 use PayPal\Api\Amount;
 use PayPal\Api\Details;
 use PayPal\Api\Item;
@@ -137,6 +140,7 @@ class PaypalController extends Controller
         $payment = Payment::get($payment_id, $this->_api_context);
         $execution = new PaymentExecution();
         $execution->setPayerId(Input::get('PayerID'));
+        $user = auth()->user();
         
         /**Execute the payment **/
         $result = $payment->execute($execution, $this->_api_context);
@@ -151,25 +155,41 @@ class PaypalController extends Controller
                 $order = $this->lessonService->store($productId);
                 
                 \App\Transaction::create([
-                    'user_id' => auth()->id(),
+                    'user_id' => $user->id,
                     'order_id' => $order->id,
                     'amount' => env('EVALUATION_COST'),
                     'complete' => 1
                 ]);
-            
+                Mail::to($user->email)->send(
+                    new EvaluationPurchased($user)
+                );
+                
+                Mail::to(env('MAIL_ADMIN_ADDRESS'))->send(
+                    new EvaluationPurchased($user)
+                );                
+
             } else {
-                Session::flash('success', 'Thank you. New virtual IELTS exam has been purchased successfully!');
+                Session::flash('success', 'Thank you. New IELTS Virtual Exam has been purchased successfully!');
 
                 $subscription = $this->subscriptionService->getById($productId);
                 $order = $this->subscriptionService->store($productId);
 
                 \App\Transaction::create([
-                    'user_id' => auth()->id(),
+                    'user_id' => $user->id,
                     'order_id' => $order->id,
                     'amount' => $subscription->price,
                     'complete' => 1
                 ]);
+
+                Mail::to($user->email)->send(
+                    new ExamPurchased($user)
+                );
+
+                Mail::to(env('MAIL_ADMIN_ADDRESS'))->send(
+                    new ExamPurchased($user)
+                );                
             }
+
             
             return Redirect::to('/lessons');
         }

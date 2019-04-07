@@ -6,6 +6,8 @@ use Illuminate\Http\Request;
 use App\Services\LessonService;
 use App\Services\PaymentService;
 use App\Evaluation;
+use App\Mail\EvaluationPurchased;
+use Illuminate\Support\Facades\Mail;
 use Session;
 
 class EvaluationController extends Controller
@@ -56,6 +58,16 @@ class EvaluationController extends Controller
 
         Session::flash('success', 'Thank you. Your Speaking Test has been sent for evaluation successfully!');
         $this->lessonService->sendForEvaluation($lessonId);
+
+        $user = auth()->user();
+        
+        Mail::to($user->email)->send(
+            new EvaluationPurchased($user)
+        );
+
+        Mail::to(env('MAIL_ADMIN_ADDRESS'))->send(
+            new EvaluationPurchased($user)
+        );        
 
         return response()->json(['status' => 'success'], 200);
     }

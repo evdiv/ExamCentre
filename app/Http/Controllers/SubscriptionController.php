@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use App\Services\SubscriptionService;
 use App\Services\PaymentService;
 use App\Transaction;
+use App\Mail\ExamPurchased;
+use Illuminate\Support\Facades\Mail;
 use Session;
 
 class SubscriptionController extends Controller
@@ -44,6 +46,7 @@ class SubscriptionController extends Controller
     {
         $subscriptionId = request('productId');
         $subscription = $this->subscriptionService->getById($subscriptionId);
+        $user = auth()->user();
 
         if(!$this->subscriptionService->hasAvailableExams($subscriptionId)) {
             return view('subscription', compact('subscription'))->withErrors('This Exam Package is not available at the moment');
@@ -69,6 +72,15 @@ class SubscriptionController extends Controller
             'amount' => $subscription->price,
             'complete' => 1
         ]);
+
+        Mail::to($user->email)->send(
+            new ExamPurchased($user)
+        );
+
+        Mail::to(env('MAIL_ADMIN_ADDRESS'))->send(
+            new ExamPurchased($user)
+        );
+
 
         return response()->json(['status' => 'success'], 200);
     }

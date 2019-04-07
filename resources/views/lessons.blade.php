@@ -36,7 +36,7 @@
             <div class="col-md-8">
                 <div class="card text-white bg-info shadow">
                     <div class="card-header">
-                        <h3>Your Lessons</h3>
+                        <h3>Your IELTS Exams</h3>
                     </div>
 
                     <div class="card-body">
@@ -64,7 +64,7 @@
                                     @if($lessons['active']->count() > 0)
                                         <tr>
                                             <td></td>
-                                            <td><h6 style="margin-top: 20px;">Active Lessons</h6></td>
+                                            <td><h6 style="margin-top: 20px;">Active Exams</h6></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
@@ -97,7 +97,7 @@
 
                                         <tr>
                                             <td></td>
-                                            <td><h6 style="margin-top: 20px;">Completed Lessons</h6></td>
+                                            <td><h6 style="margin-top: 20px;">Completed Exams</h6></td>
                                             <td></td>
                                             <td></td>
                                             <td></td>
