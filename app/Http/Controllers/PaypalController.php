@@ -164,7 +164,7 @@ class PaypalController extends Controller
                     new EvaluationPurchased($user)
                 );
                 
-                Mail::to(env('MAIL_ADMIN_ADDRESS'))->send(
+                Mail::to(config('mail.admin'))->send(
                     new EvaluationPurchased($user)
                 );                
 
@@ -185,7 +185,7 @@ class PaypalController extends Controller
                     new ExamPurchased($user)
                 );
 
-                Mail::to(env('MAIL_ADMIN_ADDRESS'))->send(
+                Mail::to(config('mail.admin'))->send(
                     new ExamPurchased($user)
                 );                
             }

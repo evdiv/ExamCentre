@@ -1,10 +1,15 @@
 @extends('layouts.app')
 
+@push('scripts')
+    <script src="https://checkout.stripe.com/checkout.js"></script>
+    <script src="https://js.stripe.com/v3/"></script>
+@endpush
+
 @section('content')
 
     @if(auth()->check())
         <div class="container" >
-            <a href="/lessons" class="navbar-menu btn btn-success btn-sm"><i class="fas fa-arrow-circle-left fa-lg"></i> Back to Home</a>
+            <a href="/lessons" class="navbar-menu btn btn-top btn-sm"><i class="fas fa-arrow-circle-left fa-lg"></i> Back to Home</a>
         </div>
     @endif
 

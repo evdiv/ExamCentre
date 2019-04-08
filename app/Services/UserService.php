@@ -21,11 +21,11 @@ class UserService
             'password' => Hash::make($data['password']),
         ]);
 
-        Mail::to($user->email)->send(
+        Mail::to($user)->send(
             new RegistrationCompleted($user)
         );
 
-        Mail::to(env('MAIL_ADMIN_ADDRESS'))->send(
+        Mail::to(config('mail.admin'))->send(
             new RegistrationCompleted($user)
         );
 

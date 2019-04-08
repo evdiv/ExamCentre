@@ -3,7 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Services\SubscriptionService;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Http\Request;
+use App\Mail\MessageSent;
 use App\Message;
 use Session;
 
@@ -54,6 +56,13 @@ class PageController extends Controller
 
             Message::create($validated);
         }
+
+        $validated['name'] = empty($validated['name']) ? auth()->user()->name : $validated['name'];
+        $validated['email'] = empty($validated['email']) ? auth()->user()->email : $validated['email'];        
+
+        Mail::to(config('mail.admin'))->send(
+            new MessageSent($validated)
+        );
 
         Session::flash('success', 'Thank you for your message!');
         return view('help');
