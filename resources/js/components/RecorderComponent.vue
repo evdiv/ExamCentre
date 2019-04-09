@@ -141,7 +141,7 @@
                 recordList    : [],
                 selected      : {},
                 uploaderOptions : {},
-                responseMaxTime: 16, 
+                responseMaxTime: 18, 
                 delayTime: 2000
             }
         },
@@ -211,11 +211,11 @@
 
                     } else if(parseInt(this.intervals[0]) > this.secondPartStart) {
                         //console.log("third part")
-                        this.responseMaxTime = 26
+                        this.responseMaxTime = 28
                         this.delayTime = 5000
                     } else {
                         //console.log("first part")
-                        this.responseMaxTime = 16
+                        this.responseMaxTime = 18
                         this.delayTime = 3000
                     }
 

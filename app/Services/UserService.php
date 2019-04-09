@@ -17,7 +17,7 @@ class UserService
             'name' => $data['name'],
             'email' => $data['email'],
             'country' => $data['country'],
-            'occupation_id' => $data['occupation_id'],            
+            'occupation_id' => $data['occupation_id'],     
             'password' => Hash::make($data['password']),
         ]);
 
@@ -38,6 +38,8 @@ class UserService
             'name' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users',
             'password' => 'required|string|min:6|confirmed',
+            'userName'  => 'present|max:0', //Using Honeypot
+            'website'  => 'present|max:0' //Using Honeypot
         ]);
     }
 }
