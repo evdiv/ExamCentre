@@ -1,11 +1,13 @@
 @extends('layouts.app')
 
+@section('title', config('app.name') . '. Log in')
+
 @section('content')
 <div class="container content">
     <div class="row justify-content-center">
         <div class="col-md-8">
             <div class="card text-white bg-info shadow">
-                <div class="card-header"><h2><i class="fas fa-user"></i> {{ __('Login') }}</h2></div>
+                <div class="card-header"><h2><i class="fas fa-user"></i> Log In</h2></div>
 
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
@@ -54,13 +56,9 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-6 offset-md-3" style="margin-top: 40px;">
-                                <button type="submit" class="btn btn-block btn-lg btn-light">
-                                    {{ __('Login') }}
-                                </button>
+                                <button type="submit" class="btn btn-block btn-lg btn-light">Log In</button>
 
-                                <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    {{ __('Forgot Your Password?') }}
-                                </a>
+                                <a class="btn btn-link" href="{{ route('password.request') }}">{{ __('Forgot Your Password?') }}</a>
                             </div>
                         </div>
                     </form>

@@ -25,7 +25,7 @@
                     </li>
                 
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}"><i style="color: #e31837;" class="fas fa-user"></i> &nbsp;{{ __('Login') }}</a>
+                        <a class="nav-link" href="{{ route('login') }}"><i style="color: #e31837;" class="fas fa-user"></i> &nbsp;Log In</a>
                     </li>
                 @else
                     <li class="nav-item">

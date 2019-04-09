@@ -7,7 +7,14 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name') }}. Effective way to improve your IELTS Speaking</title>
+    <title>@yield('title', config('app.name'))</title>
+    <meta name="description" content="@yield('description', 'Prepare for the IELTS speaking exam in the most effective way. All virtual exams are created by real IELTS examiners.')">
+    <meta name="keywords" content="@yield('keywords', 'IELTS Speaking test preparation, real IELTS speaking exams, IELTS speaking topics')">
+
+    <link rel="apple-touch-icon" sizes="180x180" href="/images/favicon_io/apple-touch-icon.png">
+    <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon_io//favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon_io//favicon-16x16.png">
+    <link rel="manifest" href="/images/favicon_io/site.webmanifest">
 
     <!-- Scripts -->
     @stack('scripts')
@@ -33,5 +40,6 @@
 
         @include('layouts.footer')
     </div>
+    @include('layouts.ga')
 </body>
 </html>

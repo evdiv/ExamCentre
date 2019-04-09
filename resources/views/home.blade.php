@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', config('app.name') . '. Effective way to prepare for the IELTS Speaking Test')
+
 @section('content')
 
     <div class="container content">

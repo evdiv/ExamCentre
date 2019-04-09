@@ -1,5 +1,7 @@
 @extends('layouts.app')
 
+@section('title', config('app.name') . '. Register and get Free IELTS Speaking Exam')
+
 @section('content')
 <div class="container content">
     <div class="row justify-content-center">
