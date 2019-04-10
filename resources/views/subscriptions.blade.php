@@ -12,13 +12,15 @@
 
         <div class="jumbotron jumbotron-fluid" style="margin-bottom: 40px;">
             <div class="container">
-                <img src="/images/header-examinier.png" class="float-left" style="margin: 0 30px 40px 0;" alt="IELTS Virtual Speaking Exams Mascot">
-                <h1 class="display-4">IELTS Virtual Speaking Exams</h1>
+                <h1 style="display: inline-block;">IELTS Virtual Speaking Exams</h1>
+                <img src="/images/header-examinier.png" class="float-left jumbotron-img" alt="IELTS Virtual Speaking Exams Mascot">
                 
                 <p>We have found that for many students, the most difficult part of the IELTS Exam is the speaking section, mostly because they do not know what to expect on the real exam, do not practice enough, and do not have anyone who can professionally evaluate their speech and point out their weak points.</p> 
                 <p>Using our service, you will experience the speaking exam in the most realistic way, as all our tests are created by real IELTS examiners. Our teachers also will be able to evaluate your speaking ability according to the official IELTS evaluation standards. Evaluation cost is {{ env('EVALUATION_COST') }} USD.</p>
+
             </div>
         </div>
+        
         <hr />
 
         <div id="subscriptions" class="row">

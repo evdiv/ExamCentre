@@ -8,7 +8,7 @@
 
         <div class="row justify-content-center">
             <div class="col-md-4">
-                <div class="card text-white bg-info shadow">
+                <div class="card text-white bg-info shadow d-none d-sm-block">
                     <div class="card-header">
                         <h3>Personal Details &nbsp;<small>
                         <a href="/account">
@@ -52,10 +52,9 @@
                                     <tr>
                                         <th class="text-center" scope="col"></th>
                                         <th scope="col">Exam</th>
-                                        <th class="text-center" scope="col">Added</th>
                                         <th class="text-center" scope="col">Completed</th>
                                         <th class="text-center" scope="col">IELTS Score</th>
-                                        <th class="text-center" scope="col">Actions</th>
+                                        <th class="text-center" scope="col" style="min-width: 100px;">Actions</th>
                                     </tr>
                                 </thead>
 
@@ -68,7 +67,6 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td></td>
                                         </tr>
                                     @endif
 
@@ -77,10 +75,11 @@
                                             <td></td>
                                             <td>
                                                 <a href="/lessons/{{ $lesson->id }}">
-                                                    <img src="/images/{{ $lesson->exam->preview }}" class="img-thumbnail" alt="{{ $lesson->exam->title }}">
+                                                    <img src="/images/{{ $lesson->exam->preview }}" class="img-thumbnail" alt="{{ $lesson->exam->title }}"><br/>
                                                 </a>
+                                                <small>Added {{ $lesson->created_at->diffForHumans() }}</small>
+
                                             </td>
-                                            <td class="text-center"><small>{{ $lesson->created_at->diffForHumans() }}</small></td>
                                             <td class="text-center">...</td>
                                             <td class="text-center">...</td>
                                             <td class="text-center"><a href="/lessons/{{ $lesson->id }}" 
@@ -101,7 +100,6 @@
                                             <td></td>
                                             <td></td>
                                             <td></td>
-                                            <td></td>
                                         </tr>
                                     @endif
 
@@ -112,10 +110,11 @@
                                             <td></td>
                                             <td>
                                                 <a href="/lessons/{{ $lesson->id }}">
-                                                    <img src="/images/{{ $lesson->exam->preview }}" class="img-thumbnail" alt="{{ $lesson->exam->title }}">
+                                                    <img src="/images/{{ $lesson->exam->preview }}" class="img-thumbnail" alt="{{ $lesson->exam->title }}"><br/>
                                                 </a>
+                                                <small>Added {{ $lesson->created_at->diffForHumans() }}</small>
+
                                             </td>
-                                            <td class="text-center"><small>{{ $lesson->created_at->diffForHumans() }}</small></td>
                                             <td class="text-center text-light">
                                                 <i class="far fa-check-circle fa-lg"></i></td>
                                             <td class="text-center">...</td>
@@ -228,10 +227,10 @@
                                             <td></td>
                                             <td>
                                                 <a href="/lessons/{{ $lesson->id }}">
-                                                    <img src="/images/{{ $lesson->exam->preview }}" class="img-thumbnail" alt="{{ $lesson->exam->title }}">
+                                                    <img src="/images/{{ $lesson->exam->preview }}" class="img-thumbnail" alt="{{ $lesson->exam->title }}"><br/>
                                                 </a>
+                                                <small>Added {{ $lesson->created_at->diffForHumans() }}</small>
                                             </td>
-                                            <td class="text-center"><small>{{ $lesson->created_at->diffForHumans() }}</small></td>
                                             <td class="text-light text-center"><i class="far fa-check-circle fa-lg"></i></td>
                                             <td class="text-center">...</td>
                                             <td class="text-center">
@@ -246,10 +245,10 @@
                                             <td></td>
                                             <td>
                                                 <a href="/lessons/{{ $lesson->id }}">
-                                                    <img src="/images/{{ $lesson->exam->preview }}" class="img-thumbnail" alt="{{ $lesson->exam->title }}">
+                                                    <img src="/images/{{ $lesson->exam->preview }}" class="img-thumbnail" alt="{{ $lesson->exam->title }}"><br/>
                                                 </a>
+                                                <small>Added {{ $lesson->created_at->diffForHumans() }}</small>
                                             </td>
-                                            <td class="text-center"><small>{{ $lesson->created_at->diffForHumans() }}</small></td>
                                             <td class="text-light text-center"><i class="far fa-check-circle fa-lg"></i></td>
                                             <td class="text-center"><span class="badge badge-pill badge-danger">{{ $lesson->evaluation->mark }}</span></td>
                                             <td class="text-center"><a href="/lessons/{{ $lesson->id }}" 

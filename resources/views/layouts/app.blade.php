@@ -28,7 +28,7 @@
 
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="wrapper">
 
         @include('layouts.navbar')
 
@@ -36,10 +36,13 @@
             <nav class="navbar-stripe"></nav>
 
             @yield('content')
+
         </main>
 
-        @include('layouts.footer')
+        <div class="push"></div>
     </div>
+
+    @include('layouts.footer')
     @include('layouts.ga')
 </body>
 </html>

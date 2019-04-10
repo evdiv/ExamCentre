@@ -1,9 +1,9 @@
 <footer class="footer">
     <div class="container">
     	<div class="row">
-    		<div class="col-sm-6"><span class="text-muted">2019 IELTS Virtual Speaking Tests</span></div>
+    		<div class="col-sm-6"><span class="text-muted">2019 {{ config('app.name') }}</span></div>
 
-    		<div class="col-sm-6 text-right">
+    		<div class="col-sm-6 text-right footer-menu">
     			
                 @guest
                     
