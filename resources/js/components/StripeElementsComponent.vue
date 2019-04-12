@@ -16,7 +16,7 @@
             </div>    
  
              <div class="form-group row">
-                <div class="col-md-8">
+                <div class="col-md-8 col-8">
                     <card-expiry class='form-control card-expiry'
                         ref='cardExpiry'
                         :stripe='stripe'
@@ -25,7 +25,7 @@
                     />
                 </div>    
 
-                <div class="col-md-4">
+                <div class="col-md-4 col-4">
                     <card-cvc class='form-control card-cvc'
                         ref='cardCvc'
                         :stripe='stripe'

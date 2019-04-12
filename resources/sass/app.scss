@@ -49,12 +49,17 @@ nav.navbar-stripe {
   color: #fff;
 }
 
+.btn-register {
+  padding: 1.5rem 1rem;
+}
+
 .jumbotron {
   background-color: #e3dccc;
   padding: 0.5rem 1rem 0.5rem 1rem;
 }
 
 .jumbotron-img {
+  float: left!important;
   margin: 0 30px 40px 0; 
   max-height: 220px;
 }
@@ -112,23 +117,41 @@ nav.navbar-stripe {
 
 @media screen and (max-width: 768px) {
     .img-logo {
-      max-width: 380px;
+      max-width: 295px;
+    }
+
+    .jumbotron {
+      padding: 0.5rem;
     }
 
     .jumbotron-img {
-      margin: 0 10px 20px 0; 
-      max-height: 160px;
+      margin: 0 0 5px 0; 
+      float: none !important;
     }
 
     h1 {
-        font-size:2rem;
+      font-size:1.6rem;
     }
 
+    h2 {
+      font-size:1.5rem;
+    }   
+
+    h5 {
+      font-size:0.9rem;
+    }       
+
     .card {
-        margin-bottom: 20px;
+      margin-bottom: 30px;
     }
 
     .footer-menu {
         display: none;
+    }
+}
+
+@media screen and (max-width: 340px) {
+    .img-logo {
+      max-width: 220px;
     }
 }

@@ -4,7 +4,7 @@
         <div class="col-md-7"> 
             <div class="card text-white bg-info shadow">
                 <div class="card-header text-center">
-                    <h2>{{ product.title }}</h2>
+                    <h4>{{ product.title }}</h4>
                 </div>
 
                 <div class="card-body text-center">
