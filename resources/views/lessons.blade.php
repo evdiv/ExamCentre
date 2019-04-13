@@ -19,7 +19,8 @@
                         <i class="fas fa-user"></i> {{ $user->name }} / {{ $user->occupation->name }}<br/>
 
                         <i class="fas fa-envelope"></i> {{ $user->email }}<br/>
-                        <i class="fas fa-map-marker-alt"></i> {{ $user->country }}<br/><br/>
+                        <!--<i class="fas fa-map-marker-alt"></i> {{ $user->country }}-->
+                        <br/>
 
                         <small>
                             @if ( $user->updated_at )

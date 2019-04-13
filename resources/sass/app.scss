@@ -40,6 +40,10 @@ nav.navbar-stripe {
 	border-radius: 0 0 8px 8px;
 }
 
+.navbar-brand {
+  margin-right: 0;
+}
+
 .btn-top {
   background-color: #b1a07b;
   color: #fff;
@@ -150,8 +154,30 @@ nav.navbar-stripe {
     }
 }
 
-@media screen and (max-width: 395px) {
+@media screen and (max-width: 360px) {
+    .img-logo {
+      max-width: 250px;
+    }
+
+    h1 {
+      font-size:1.4rem;
+    }
+
+    h2 {
+      font-size:1.2rem;
+    }  
+}
+
+@media screen and (max-width: 340px) {
     .img-logo {
       max-width: 220px;
     }
+
+    h1 {
+      font-size:1.3rem;
+    }
+
+    h2 {
+      font-size:1.1rem;
+    }  
 }
