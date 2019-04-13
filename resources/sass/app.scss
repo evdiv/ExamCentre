@@ -44,10 +44,15 @@ nav.navbar-stripe {
   margin-right: 0;
 }
 
+.navbar-icon {
+  color: #e31837;
+}
+
 .btn-top {
   background-color: #b1a07b;
   color: #fff;
 }
+
 .btn-top:hover {
   background-color: #827252;
   color: #fff;
@@ -60,6 +65,7 @@ nav.navbar-stripe {
 .jumbotron {
   background-color: #e3dccc;
   padding: 0.5rem 1rem 0.5rem 1rem;
+  margin-bottom: 40px;
 }
 
 .jumbotron-img {
@@ -68,12 +74,33 @@ nav.navbar-stripe {
   max-height: 220px;
 }
 
+.home-reviews {
+  margin: 40px 0;
+}
+
+.home-reviews .card{
+  border: none; 
+  background-color: #fffae6;
+  font-size: 26px; 
+  color: #b79164; 
+  font-family: 'Satisfy', cursive;
+}
+
 .card-body {
   padding: 0.5rem 1.25rem;
 }
 
 .content {
 	margin-top: 20px;
+}
+
+.home-description {
+  margin: 40px 0;
+  font-size: 18px;
+}
+
+.home-description .card-body{
+  padding-top: 1rem;
 }
 
 .form-control-hp {
@@ -86,6 +113,11 @@ nav.navbar-stripe {
 
 .advantage-sub-title {
   font-size: 16px;
+}
+
+img.exam-mascot {
+  margin: 0 10px 20px 0;
+  float:left;
 }
 
 .exam-title {
@@ -119,22 +151,60 @@ nav.navbar-stripe {
     border-top: 6px solid #b1a07b;
 }
 
+@media screen and (max-width: 992px) {
+    .main-promo-container {
+      padding-right:5px !important;
+      padding-left:5px !important;
+    }
+
+    .home-description {
+      margin: 20px 0;
+    }
+
+    .card-body {
+      padding: 0.5rem 0.95rem;
+    }
+
+    h2.exam-title {
+      font-size:1.3rem;
+    }
+
+    img.exam-mascot {
+      display:none;
+    }
+}
+
 @media screen and (max-width: 768px) {
     .img-logo {
-      max-width: 295px;
+      max-width: 340px;
     }
 
     .jumbotron {
       padding: 0.5rem;
     }
 
-    .jumbotron-img {
-      margin: 0 0 5px 0; 
-      float: none !important;
+    img.exam-mascot {
+      display:block;
+    }
+
+    .home-description {
+      margin: 5px 0;
+    }
+
+    .home-description .card-body{
+      padding-top: 1rem;
+    }
+
+    .home-reviews {
+      margin: 10px 0;
+    }
+   
+    .card-body {
+      padding: 0.5rem 1.25rem;
     }
 
     h1 {
-      font-size:1.6rem;
+      font-size:1.8rem;
     }
 
     h2 {
@@ -154,7 +224,30 @@ nav.navbar-stripe {
     }
 }
 
-@media screen and (max-width: 360px) {
+@media screen and (max-width: 460px) {
+    .img-logo {
+      max-width: 290px;
+    }
+
+    .jumbotron-img {
+      margin: 0 0 5px 0; 
+      width: 100%;
+      max-height: 100%;
+      float: none !important;
+    }
+
+
+    h1 {
+      font-size:1.6rem;
+    }
+
+    h2 {
+      font-size:1.3rem;
+    }  
+}
+
+
+@media screen and (max-width: 380px) {
     .img-logo {
       max-width: 250px;
     }

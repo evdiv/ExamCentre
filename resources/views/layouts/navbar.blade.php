@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-md navbar-dark" style="padding: 0.1rem 1rem; background-color: #143944;">
+<nav class="navbar navbar-expand-lg navbar-dark" style="padding: 0.1rem 1rem; background-color: #143944;">
     <div class="container">
         <a class="navbar-brand" href="{{ url('/') }}">
             <img class="img-fluid img-logo" src="/images/logo.png" alt="logo" style="max-height: 52px;">
@@ -20,23 +20,23 @@
                 @guest
                     <li class="nav-item">
                         @if (Route::has('register'))
-                            <a class="nav-link" href="{{ route('register') }}">Register and get Free Exam</a>
+                            <a class="nav-link" href="{{ route('register') }}"><i class="fas fa-user-plus navbar-icon"></i> &nbsp;Register and get Free Exam</a>
                         @endif
                     </li>
-                
+
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('login') }}"><i style="color: #e31837;" class="fas fa-user"></i> &nbsp;Log In</a>
+                        <a class="nav-link" href="{{ route('login') }}"><i class="fas fa-sign-in-alt navbar-icon"></i> &nbsp;Log In</a>
                     </li>
                 @else
                     <li class="nav-item">
                         <a class="nav-link" href="/subscriptions#subscriptions">
-                            <i style="color: #e31837;" class="fas fa-shopping-cart"></i> 
+                            <i class="fas fa-shopping-cart navbar-icon"></i> 
                         &nbsp;Buy Exams</a>
                     </li>
 
                     <li class="nav-item dropdown">
                         <a id="navbarDropdown" class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" v-pre>
-                          <i style="color: #e31837;" class="fas fa-user-circle"></i>  
+                          <i class="fas fa-user-circle navbar-icon"></i>  
                           {{ Auth::user()->name }} <span class="caret"></span>
                         </a>
 
@@ -58,7 +58,7 @@
                     </li>
                 @endguest
                 <li class="nav-item">
-                    <a class="nav-link" href="/help"><i style="color: #e31837;" class="fas fa-question"></i> &nbsp;Help</a>
+                    <a class="nav-link" href="/help"><i class="fas fa-question navbar-icon"></i> &nbsp;Help</a>
                 </li>    
             </ul>
         </div>

@@ -5,7 +5,7 @@
 @section('content')
 <div class="container content">
     <div class="row justify-content-center">
-        <div class="col-md-7">
+        <div class="col-md-9 col-lg-7">
             <div class="card text-white bg-info shadow">
                 <div class="card-header">
                     @if(empty($subscription))
@@ -62,7 +62,7 @@
                         </div>
 
 
-                        <div class="form-group row">
+                       <!-- <div class="form-group row">
                             <label for="occupation_id" class="col-md-4 col-form-label text-md-right">Your Occupation</label>
 
                             <div class="col-md-8">
@@ -76,7 +76,7 @@
                         </div>
 
 
-                       <!-- <div class="form-group row">
+                        <div class="form-group row">
                             <label for="country" class="col-md-4 col-form-label text-md-right">Your Country</label>
 
                             <div class="col-md-8">

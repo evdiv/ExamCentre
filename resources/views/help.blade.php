@@ -10,7 +10,7 @@
 
         <div class="row justify-content-center">
 
-            <div class="col-sm-8">
+            <div class="col-md-9 col-lg-7">
                 @if (!Session::has('success'))
                     <div class="card text-white bg-info shadow">
                         <div class="card-header">

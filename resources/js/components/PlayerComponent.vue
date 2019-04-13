@@ -3,7 +3,7 @@
         <video id="videoPlayerContainer"
                class="video-js vjs-default-skin vjs-big-play-centered"
                v-if="url" >
-            <source :src="url" type='video/mp4' />
+            <source :src="url" type='video/mp4' preload="auto"/>
         </video>
 
     </div>

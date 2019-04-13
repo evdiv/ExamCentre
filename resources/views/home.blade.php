@@ -8,8 +8,8 @@
 
         @include('layouts.errors')
 
-        <div class="jumbotron jumbotron-fluid" style="margin-bottom: 40px;">
-            <div class="container">
+        <div class="jumbotron jumbotron-fluid">
+            <div class="container main-promo-container">
                 <h1 style="display: inline-block;">IELTS Virtual Speaking Exams</h1>
                 <img src="/images/header-examinier.png" class="jumbotron-img" alt="IELTS Virtual Speaking Exams Mascot">
                 
@@ -32,9 +32,7 @@
 
                         <div class="card-body">
 
-                            <img src="/images/{{$key}}-subscription.png" 
-                                style="margin: 0 10px 20px 0;" 
-                                alt="{{ $subscription->title }} Mascot" class="float-left">
+                            <img src="/images/{{$key}}-subscription.png" class="exam-mascot" alt="{{ $subscription->title }} Mascot" >
 
                             <p class="card-text">
                                 {{ $subscription->description }}
@@ -61,13 +59,13 @@
         </div>
 
 
-        <div class="row" style="margin: 40px 0;">
+        <div class="row home-description">
 
             <div class="col-md-12">
                 <div class="card transparent-card">
-                     <div class="card-body" style="padding-top: 1rem;">
+                     <div class="card-body">
                         <p class="card-text">
-                            <i style="font-size: 18px;">All you need to take the virtual IELTS exam is a computer, a microphone, and relatively silent surroundings. Our professional teachers will help you immerse yourself in the examination process from the comfort of your own home. After completing any of our exams, you will gain not only a solid understanding of the examination process but also be able to send your recordings for evaluation, which takes 24 hours. Upon its completion, you will receive a report with your weak points and your estimated IELTS mark. Taking our virtual exams is an easy and convenient way to significantly improve your performance on the real IELTS test.</i>
+                            <i>All you need to take the virtual IELTS exam is a computer, a microphone, and relatively silent surroundings. Our professional teachers will help you immerse yourself in the examination process from the comfort of your own home. After completing any of our exams, you will gain not only a solid understanding of the examination process but also be able to send your recordings for evaluation, which takes 24 hours. Upon its completion, you will receive a report with your weak points and your estimated IELTS mark. Taking our virtual exams is an easy and convenient way to significantly improve your performance on the real IELTS test.</i>
                         </p>
                     </div>
                 </div>    
@@ -77,21 +75,21 @@
         <hr />
 
         <div class="row">
-            <div class="col-md-3">
+            <div class="col-lg-3 col-md-6">
                 <div class="card text-white bg-success shadow-sm">
                     <div class="card-header"><h3 class='advantage-title'><span class='advantage-sub-title'>
                         <span class="badge badge-danger">1st</span> Advantage</span> <br/>
                     Based on real IELTS Exams</h3></div>
                     <div class="card-body">
                         <p class="card-text">
-                            All our virtual exams are based on the real IELTS Speaking tests. We try to make them as realistic as possible in order to provide you with the most accurate test experience.
+                            All our virtual exams are based on the real IELTS Speaking tests. We try to make them as realistic as possible in order to provide you with the most accurate and beneficial test experience.
                         </p>
                     </div>
                 </div>
             </div>
 
 
-            <div class="col-md-3">
+            <div class="col-lg-3 col-md-6">
                 <div class="card text-white bg-success shadow-sm">
                     <div class="card-header"><h3 class='advantage-title'><span class='advantage-sub-title'>
                         <span class="badge badge-danger">2nd</span> Advantage</span> <br/>
@@ -105,7 +103,7 @@
             </div>
 
 
-            <div class="col-md-3">
+            <div class="col-lg-3 col-md-6">
                 <div class="card text-white bg-success shadow-sm">
                     <div class="card-header"><h3 class='advantage-title'><span class='advantage-sub-title'>
                         <span class="badge badge-danger">3rd</span> Advantage</span> <br/>
@@ -120,7 +118,7 @@
             </div>
 
 
-            <div class="col-md-3">
+            <div class="col-lg-3 col-md-6">
                 <div class="card text-white bg-success shadow-sm">
                     <div class="card-header"><h3 class='advantage-title'><span class='advantage-sub-title'>
                         <span class="badge badge-danger">4th</span> Advantage</span> <br/> 
@@ -135,9 +133,9 @@
             </div>
         </div>
 
-        <div class="row" style="margin: 40px 0;">
+        <div class="row home-reviews">
             <div class="col-md-12">
-                <div class="card" style="border: none; background-color: #fffae6; font-size: 26px; color: #b79164; font-family: 'Satisfy', cursive;">
+                <div class="card">
                      <div class="card-body">
                         <p class="card-text">
                            <reviews></reviews>
