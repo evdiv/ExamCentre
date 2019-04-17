@@ -17,10 +17,9 @@
                         <h3>Personal Details</h3>
                     </div>
                     <div class="card-body">
-                        <i class="fas fa-user"></i> {{ $user->name }} / {{ $user->occupation->name }}<br/>
+                        <i class="fas fa-user"></i> {{ $user->name }}<br/>
 
                         <i class="fas fa-envelope"></i> Email: {{ $user->email }}<br/>
-                        <i class="fas fa-map-marker-alt"></i> Country: {{ $user->country }}<br/><br/>
 
                         <small>
                             @if ( $user->updated_at )
@@ -82,24 +81,6 @@
                                     @endif
                                 </div>
                             </div>
-
-                            <div class="form-group row">
-                                <label for="birthday" class="col-md-4 col-form-label text-md-right">Date of Birth</label>
-
-                                <div class="col-md-8">
-                                    <input type="date" class="form-control" name="birthday" value="{{ $user->birthday }}">
-                                </div>
-                            </div>
-                            
-
-                            <div class="form-group row">
-                                <label for="country" class="col-md-4 col-form-label text-md-right">Country</label>
-
-                                <div class="col-md-8">
-                                    <input type="text" class="form-control" name="country" value="{{ $user->country }}">
-                                </div>
-                            </div>
-
 
                             <div class="form-group row">
                                 <label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Password') }}</label>

@@ -14,7 +14,7 @@
 
                     Please give us your payment details:
                     <StripeElements class='stripe-card'
-                      stripe='pk_test_wSFoTlDs7VAqxbDCxnmj6MkF'
+                      stripe='pk_live_DoCTByUq8dZ05ORCr9KLxByp'
                       :product = 'product' 
                       :options='stripeOptions'
                       @change='complete = $event.complete' />
