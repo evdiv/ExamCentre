@@ -25,8 +25,10 @@ class RegisterController extends Controller
 
     protected function redirectTo()
     {
-         //Get Demo Exam after Registration, id = 1
-        $this->subscriptionService->store(1);
+        if(config('app.register_for_demo')) {
+            //Get Demo Exam after Registration, id = 1
+            $this->subscriptionService->store(1);
+        }
         
         if(!empty(request('subscription'))) {
             return '/subscriptions/' . request('subscription'); // return dynamicaly generated URL.

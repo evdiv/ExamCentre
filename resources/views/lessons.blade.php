@@ -37,7 +37,7 @@
             <div class="col-md-8">
                 <div class="card text-white bg-info shadow">
                     <div class="card-header">
-                        <h3>Your IELTS Exams</h3>
+                        <h3>Your Exams Simulation</h3>
                     </div>
 
                     <div class="card-body">

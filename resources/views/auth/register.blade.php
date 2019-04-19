@@ -131,4 +131,10 @@
         </div>
     </div>
 </div>
+
+<!-- Event snippet for Registrations conversion page -->
+<script>
+  gtag('event', 'conversion', {'send_to': 'AW-959230621/9J-OCLHWtZkBEJ3lsskD'});
+</script>
+
 @endsection

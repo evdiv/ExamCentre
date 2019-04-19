@@ -22,7 +22,7 @@ class SubscriptionService
 
     public function getAll() 
     {
-        if (auth()->guest()) {
+        if (auth()->guest() && config('app.register_for_demo')) {
             return $this->getForGuest();
         } 
         return $this->getForRegistered();

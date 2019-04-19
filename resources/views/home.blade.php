@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', config('app.name') . '. Effective way to prepare for the IELTS Speaking Test')
+@section('title', config('app.name') . '. The most effective way to prepare for IELTS Speaking Tests online')
 
 @section('content')
 
@@ -10,11 +10,13 @@
 
         <div class="jumbotron jumbotron-fluid">
             <div class="container main-promo-container">
-                <h1 style="display: inline-block;">IELTS Virtual Speaking Exams</h1>
+                <h1 style="display: inline-block;">IELTS Speaking Exams Simulation</h1>
                 <img src="/images/header-examinier.png" class="jumbotron-img" alt="IELTS Virtual Speaking Exams Mascot">
                 
                 <p>We have found that for many students, the most difficult part of the IELTS Exam is the speaking section, mostly because they do not know what to expect on the real exam, do not practice enough, and do not have anyone who can professionally evaluate their speech and point out their weak points.</p> 
-                <p>Using our service, you will experience the speaking exam in the most realistic way, as all our tests are created by real IELTS examiners. Our teachers also will be able to evaluate your speaking ability according to the official IELTS evaluation standards. Evaluation cost is {{ env('EVALUATION_COST') }} USD.</p>
+
+                <h2 style="display: inline-block;">Created by real IELTS Examiners</h2>
+                <p>Using our service, you will experience the speaking exam in the most realistic way, as all our tests are created by real IELTS examiners. Our teachers also will be able to make an assessment of your speaking ability according to the official IELTS evaluation standards. Evaluation cost is {{ env('EVALUATION_COST') }} USD.</p>
 
             </div>
         </div>
@@ -22,6 +24,9 @@
         <hr />
 
         <div class="row">
+        	<div class="col-lg-12 text-center">
+                <h2>Exam simulations are fully based on the scripts of <span class="badge badge-danger">current IELTS Exams (spring 2019)</span></h2>
+            </div>
             @foreach($subscriptions as $key=>$subscription)
                 <div class="col-md-4">
                     <div class="card text-white bg-info shadow">
@@ -47,7 +52,7 @@
 
 
                             @if($subscription->price > 0)
-                                <a href="/subscriptions/{{ $subscription->id }}" class="btn btn-light btn-lg btn-block">Purchase</a>
+                                <a href="/subscriptions/{{ $subscription->id }}" class="btn btn-light btn-lg btn-block">Get Full Exam Simulation</a>
                             @else
                                 <a href="/register" class="btn btn-light btn-lg btn-block">Register</a>
                             @endif
@@ -107,7 +112,7 @@
                 <div class="card text-white bg-success shadow-sm">
                     <div class="card-header"><h3 class='advantage-title'><span class='advantage-sub-title'>
                         <span class="badge badge-danger">3rd</span> Advantage</span> <br/>
-                        Evaluation by IELTS examinators
+                        Assessment by IELTS examinators
                     </h3></div>
                     <div class="card-body">
                         <p class="card-text">
@@ -145,13 +150,13 @@
             </div>
         </div>    
 
-        @guest
+        @if(!Auth::user() && config('app.register_for_demo'))
             <div class="row" style="margin: 60px 0 0 0;">
                 <div class="col-md-6 offset-md-3">
-                    <a href="/register" class="btn btn-primary btn-lg btn-block btn-register">Register and get Free Exam</a> 
+                    <a href="/register" class="btn btn-primary btn-lg btn-block btn-register">Register and get Free Demo Exam</a> 
                 </div>
             </div> 
-        @endguest          
+        @endif          
 
     </div>
 @endsection

@@ -28,6 +28,7 @@
 
 </head>
 <body>
+    @include('layouts.ga')
     <div id="app" class="wrapper">
 
         @include('layouts.navbar')
@@ -43,6 +44,5 @@
     </div>
 
     @include('layouts.footer')
-    @include('layouts.ga')
 </body>
 </html>

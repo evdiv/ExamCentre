@@ -14,6 +14,7 @@ return [
     */
 
     'name' => env('APP_NAME', 'Laravel'),
+    'register_for_demo' => env('REGISTER_FOR_DEMO', true),
 
     /*
     |--------------------------------------------------------------------------

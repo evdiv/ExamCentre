@@ -20,7 +20,14 @@
                 @guest
                     <li class="nav-item">
                         @if (Route::has('register'))
-                            <a class="nav-link" href="{{ route('register') }}"><i class="fas fa-user-plus navbar-icon"></i> &nbsp;Register and get Free Exam</a>
+                            <a class="nav-link" href="{{ route('register') }}">
+                                <i class="fas fa-user-plus navbar-icon"></i> 
+                                @if(config('app.register_for_demo'))
+                                    &nbsp;Register and get Free Exam
+                                @else
+                                    &nbsp;Register
+                                @endif
+                            </a>
                         @endif
                     </li>
 
@@ -31,7 +38,7 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/subscriptions#subscriptions">
                             <i class="fas fa-shopping-cart navbar-icon"></i> 
-                        &nbsp;Buy Exams</a>
+                        &nbsp;Get Exams</a>
                     </li>
 
                     <li class="nav-item dropdown">
