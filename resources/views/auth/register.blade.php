@@ -1,6 +1,6 @@
 @extends('layouts.app')
 
-@section('title', config('app.name') . '. Register and get Free IELTS Speaking Exam')
+@section('title', config('app.name') . '. Register and start preparing for IELTS Speaking effectively')
 
 @section('content')
 <div class="container content">
@@ -9,7 +9,11 @@
             <div class="card text-white bg-info shadow">
                 <div class="card-header">
                     @if(empty($subscription))
-                        <h2>Register and get Free Exam</h2>
+                        @if(config('app.register_for_demo'))
+                            <h2>Register and get Free Exam</h2>
+                        @else
+                            <h2>Register</h2>
+                        @endif
                     @else
                         <h2>Register and purchase {{ $subscription->title }}</h2>
                         

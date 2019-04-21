@@ -105,7 +105,7 @@
                     </div>                        
 
                     <div class="alert text-right">
-                        <a href="/reports/{{ auth()->user()->id }}/{{ $lesson->evaluation->report_src}}" class="btn btn-success"><i class="fas fa-download"></i> &nbsp;Download Report</a>
+                        <a href="{{ $lesson->evaluation->report_src}}" class="btn btn-success"><i class="fas fa-download"></i> &nbsp;Download Report</a>
                     </div>
                 </div>    
 
