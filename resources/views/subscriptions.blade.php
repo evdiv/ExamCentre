@@ -12,7 +12,7 @@
 
         <div class="jumbotron jumbotron-fluid" style="margin-bottom: 40px;">
             <div class="container">
-                <h1 style="display: inline-block;">IELTS Speaking Exams Simulation</h1>
+                <h1 style="display: inline-block;">IELTS Speaking Simulation Exam</h1>
                 <img src="/images/header-examinier.png" class="jumbotron-img" alt="IELTS Virtual Speaking Exams Mascot">
                 
                 <p>We have found that for many students, the most difficult part of the IELTS Exam is the speaking section, mostly because they do not know what to expect on the real exam, do not practice enough, and do not have anyone who can professionally evaluate their speech and point out their weak points.</p> 
@@ -27,7 +27,7 @@
 
         <div id="subscriptions" class="row">
             <div class="col-lg-12 text-center">
-                <h2>Exam simulations are fully based on the scripts of <span class="badge badge-danger">current IELTS Exams (spring 2019)</span></h2>
+                <h2>Simulation Exams are fully based on the scripts of <span class="badge badge-danger">current IELTS Exams (spring 2019)</span></h2>
             </div>
 
             @foreach($subscriptions as $key=>$subscription)
@@ -51,7 +51,7 @@
                                 ${{ $subscription->price }}
                             </div>   
 
-                           <a href="/subscriptions/{{ $subscription->id }}" class="btn btn-light btn-lg btn-block">Get {{ $subscription->title }} Simulation</a>
+                           <a href="/subscriptions/{{ $subscription->id }}" class="btn btn-light btn-lg btn-block">Get Simulation {{ $subscription->title }}</a>
                         </div>
 
                     </div>
